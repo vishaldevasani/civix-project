@@ -1,0 +1,2277 @@
+[
+  {
+    "text": "There is a massive fire in the apartment building on MG Road, smoke visible from far",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "House caught fire near Kukatpally, family trapped inside",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Gas cylinder explosion in kitchen, entire floor burning",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Small fire in dustbin near market, already spreading to shops",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "LPG leak smell very strong in my flat, afraid of explosion",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Building on fire near Secunderabad railway station",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Factory fire near Nacharam industrial area, huge flames visible",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Car caught fire on the highway near Shamshabad",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Burning smell coming from electrical panel in office",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Smoke coming from roof of old building in Charminar area",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Fire broke out in cloth shop at Begum Bazaar",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Wildfire spreading in forest area near Vikarabad",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Short circuit caused fire in transformer near our colony",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Restaurant kitchen caught fire, customers evacuating",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Garbage dump near school is on fire, choking smoke",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Fire in slum area near Banjara Hills, many huts burning",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Someone set a vehicle on fire near our colony gate",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Sparks flying from electrical wires, afraid it will catch fire",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Old warehouse behind railway tracks is burning since 2 hours",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Chemical factory fire in Patancheru, toxic smoke spreading",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Shop fire on Abids road, adjacent shops also catching",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Flames coming from underground cable near junction",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Hotel room fire, guests trapped on upper floors",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "School building fire during holidays, watchman trying to control",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Fire in parking lot, 5 cars already burnt",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Cooking gas pipe leak causing small fire in kitchen",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Diwali firecracker stall caught fire near temple",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Bus caught fire on Outer Ring Road, passengers escaped",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Electrical fire in server room of IT company",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Small fire in grass near petrol bunk, could spread",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Burning smell from AC unit on 3rd floor of mall",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Crop fire spreading to nearby village in Rangareddy district",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Cotton godown fire near Warangal, entire stock burning",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "There is smoke coming from under my door, possible fire in building",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Firecracker explosion causing fire in residential area",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Serious road accident on Outer Ring Road, multiple people injured",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Old man collapsed on street near Dilsukhnagar metro station",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Child fell from 2nd floor balcony, unconscious, need ambulance",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Heart attack patient at home, need emergency ambulance immediately",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Woman in labour pain, cannot reach hospital, need help",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Person drowning in Hussain Sagar lake near Tank Bund",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Bike accident near LB Nagar, rider bleeding heavily",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Construction worker fell from scaffold, multiple fractures",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Elderly woman not responding, possible stroke",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Boy electrocuted while flying kite near power lines",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Food poisoning cases reported in school canteen, 20 students sick",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Person with chest pain collapsed in shopping mall",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Accident near Charminar, truck hit auto rickshaw",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Seizure patient on road, bystanders need guidance",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Snake bite victim in Moinabad area, need antivenom urgently",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Patient with high fever and difficulty breathing at home",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Child choking on food, parents panicking",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Worker injured in factory accident, deep cut on hand",
+    "expected_category": "Medical",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Old couple in accident, both injured, no one to help",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Person bleeding after fight near bar, needs stitches",
+    "expected_category": "Medical",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Pedestrian hit by car near Ameerpet signal, serious injury",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Pregnant woman fell down stairs, in pain",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Student fainted in exam hall, unresponsive",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Asthma patient having severe attack, inhaler not working",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Multiple people injured in bus accident on NH44",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Suicide attempt near Moula Ali overbridge",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Chemical burn victim in Patancheru factory",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Dengue patient with very high fever, needs hospital",
+    "expected_category": "Medical",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Old man fell in bathroom, hip fracture suspected",
+    "expected_category": "Medical",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Person with severe dog bite wound, bleeding not stopping",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Baby having convulsions, parents scared",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Worker crushed under machinery in workshop",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Person fell into open manhole near Malakpet",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Heat stroke victim lying on road near Mehdipatnam",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Accident between two bikes, one rider not moving",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "No water supply in our colony for past 5 days",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Main water pipe burst on MG Road, water wasting heavily",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Sewage water mixing with drinking water in our area",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Borewell motor broken, entire apartment has no water",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Waterlogging in basement due to broken drainage pipe",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Manhole overflowing with sewage on main road",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Water supply pipe leaking for 3 weeks, no one fixing",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Muddy contaminated water coming from tap",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Overhead tank of building is broken and leaking",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Canal near our area overflowing due to heavy rain",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Sewer line blocked, sewage backing up into houses",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Water tanker not coming since 1 week, we are suffering",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Storm drain completely blocked causing flooding in colony",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Drinking water smells like sewage, cannot use",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Major leak in underground pipeline wasting thousands of litres",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Entire road flooded due to drainage pipe burst",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Water pressure very low, not reaching upper floors",
+    "expected_category": "Water",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Open drainage near school is a health hazard",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Swimming pool of apartment overflowing onto road",
+    "expected_category": "Water",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Water meter broken, getting huge bills incorrectly",
+    "expected_category": "Water",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Stagnant water in park area attracting mosquitoes",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Water supply cut without notice for entire week",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Drainage cleaning not done since months, foul smell",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Chemical smell in tap water, afraid to drink",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Pipe burst near school causing water logging on road",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Bore water turning yellowish brown, not usable",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Rainwater harvesting pit overflowing into neighbour house",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Corporation water not supplied for Holi festival area",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Large puddle blocking main entrance to colony",
+    "expected_category": "Water",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Water tank leaking from roof, wasting water daily",
+    "expected_category": "Water",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Power cut for entire area since 6 hours, no info from TSSPDCL",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Fallen live electric wire on road near Ameerpet, dangerous",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Person got electric shock from broken streetlight pole",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Transformer exploded near our colony, sparks everywhere",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Electric pole leaning dangerously about to fall on road",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Street lights not working in entire sector for past month",
+    "expected_category": "Electricity",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Exposed electric wires hanging from pole near school",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Voltage fluctuation damaging all appliances in our area",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Power supply to hospital disconnected by mistake",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Electric short circuit caused small fire near junction box",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Live wire touching water pipe, fear of electrocution",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Electricity meter not working, getting wrong bills",
+    "expected_category": "Electricity",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Load shedding without schedule affecting small businesses",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Electric pole fell on car during storm, road blocked",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Sparks coming from underground cable on footpath",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Power supply to water pumping station disrupted",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "High tension wire sagging very low near road, accident risk",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Electric shock complaint from water pump connection",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Frequent power cuts causing food to spoil, complaint",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Underground cable fire causing power disruption",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Streetlight pole fallen on footpath blocking pedestrians",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Electricity supply irregular for 2 days in our layout",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "New electricity connection not provided despite application",
+    "expected_category": "Electricity",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Electric meter box open and exposed near children playground",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Bird sitting on transformer causing repeated tripping",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Power line touching tree branches, fire risk in summer",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Electricity not restored after maintenance for 12 hours",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "High voltage fluctuation damaged refrigerator and TV",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Public tube light making crackling sound near market",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Substation overloaded, lights flickering entire area",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Chain snatching incident near Jubilee Hills, culprit on bike",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Drunk driving accident, driver fled the scene",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Physical assault happening outside bar near Begumpet",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "House robbery reported in Madhapur, neighbours saw suspicious person",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Missing child, 8 years old, last seen near Dilsukhnagar bus stand",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Drug dealing suspected in abandoned building near school",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Woman being harassed by group of men on street",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Loud fight with weapons outside our apartment complex",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Eve teasing happening regularly near women college in our area",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Suspicious car parked outside bank for 3 days",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "ATM fraud, someone stole card details and withdrew money",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Domestic violence sounds from next door flat repeatedly",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Stolen motorcycle, have CCTV footage",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Illegal gambling den operating in basement of building",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Old person being cheated by fake medicine sellers",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Rowdy elements extorting money from shopkeepers in our area",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Online fraud, paid for product never received, seller not responding",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Stalking complaint, same person following girl to college daily",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Noise pollution from club at 3am disturbing residents",
+    "expected_category": "Police",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Vehicle theft from apartment parking, camera footage available",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Land grabbing attempt, goons came with documents",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Unlicensed petrol selling from house causing fire risk",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Illegal liquor shop operating near school zone",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Physical threat received from neighbour in property dispute",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Cyberbullying complaint, teenager being harassed online",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Accident and run case, bike hit pedestrian and fled",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Suspicious package left near temple gate",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Group of unknown people doing suspicious activity at night",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Mobile phone snatched by two people on bike",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Illegal construction happening at night without permission",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Very deep pothole on main road, two bikes already fell",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Bridge crack found near Musi river, looks dangerous",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Footpath completely broken and encroached by shops",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Traffic signal not working at busy 4-way junction since 3 days",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Retaining wall collapsed blocking road in colony",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Road cave-in near drainage construction, vehicle fell inside",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Old building showing cracks, residents afraid to live",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Flyover construction debris blocking 2 lanes of traffic",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Speed breaker missing on school zone road, dangerous",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Road marking completely faded on highway, accident risk",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Divider broken on main road, wrong side driving happening",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Underground parking construction causing road subsidence",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Public toilet building collapsed, no one using now",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Bus stop shed collapsed on commuters due to wind",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Encroachment on government land by builder, documents forged",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Road digging work started but no barricades placed, dangerous at night",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Metro pillar construction site has no safety fencing",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Old water tank structure on rooftop cracking, may collapse",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Culvert near village road broken, cars getting stuck",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Compound wall of government school falling down",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Road completely dug up, no alternate route given to residents",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Pedestrian subway not lit and filled with water, unusable",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Large potholes on service road causing accidents near apartments",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Overbridge steps broken, elderly people falling",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Construction rubble dumped on road blocking half the traffic",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Illegal hoarding board falling on road near signal",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Road roller parked on main road at night without lights",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Drainage construction left incomplete, road impassable",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Newly built road already developing cracks after 1 month",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Old government quarters building abandoned and crumbling",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Garbage not collected for 10 days, entire street smells terrible",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Open garbage dump near school causing health issues to children",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Dead animal body lying on road for 3 days, no one removing",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Mosquito breeding in stagnant water near park, dengue fear",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Public area being used for open defecation near colony",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Overflowing dustbin attracting stray dogs and rats",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Hospital waste being dumped in open area near residential zone",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Stray dog menace increasing, 3 people bitten this week",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Garbage dumping happening illegally in empty plot",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Rats infestation in residential apartments near drain",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Dead birds found near water tank, possible contamination",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Sweeper not coming to our area since 2 weeks",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Food waste dumped by restaurant on street every night",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Street pig menace near vegetable market causing problems",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Cockroach and rat problem in public park area",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Garbage truck not coming regularly in our ward",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Open drain near mosque cleaned very rarely, bad odor",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Plastic waste burning near colony causing toxic smoke",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Bio-medical waste improperly disposed near public area",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Snake spotted near garbage dump in colony",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Public toilet permanently locked, people using open areas",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Food stall owner throwing waste water on road",
+    "expected_category": "Sanitation",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Slaughterhouse waste being dumped in open drain",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Fly and mosquito breeding in uncovered garbage bin",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Old mattresses and furniture dumped on footpath for months",
+    "expected_category": "Sanitation",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Foul smell from underground drain near market every morning",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Garbage collection vehicle breaking down repeatedly, no service",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Litter all over beach area after weekend, no cleanup",
+    "expected_category": "Sanitation",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Drainage cleaning work scheduled but not done in monsoon",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Dead stray cat near children playground, need removal",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Request for streetlight installation in our new layout",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Noise complaint from construction site during night hours",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Encroachment of footpath by tea stall owner",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Suggestion to add park bench in central park",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Request for pedestrian crossing near school",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Loud music from temple at 4am disturbing sleep",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Complaint about unauthorized political banner on public wall",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Request for bus stop near our colony",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Unknown foul smell in air since 2 days, source unknown",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Complaint about construction noise during exam season",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Request to rename road after freedom fighter",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Inquiry about property tax reduction for senior citizen",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Abandoned vehicle parked for 3 months on road",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Request for CCTV camera installation in dark lane",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Unknown liquid spill on road, not identified",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Complaint about street vendor blocking shop entrance",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Request for additional dustbins in public garden",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Suggestion for one-way traffic on crowded market road",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Tree fallen on road blocking traffic after storm",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Unattended luggge found near bus stand",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Request for ramp for wheelchair access at government office",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Complaint about illegal building construction without permit",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Overhead water tank overflow wasting water daily",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Request for additional streetlights near ATM",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Complaint about hawkers blocking main road entrance",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Inquiry about birth certificate from hospital",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Tree branch hanging dangerously over power line",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Request for traffic police at school opening time",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Complaint about unauthorized parking on footpath",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Unknown animal entering colony at night scaring residents",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "My neighbour's house is burning, they are not at home",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Electrical short circuit caused fire in meter box outside",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Fire spreading from slum to nearby apartments",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Flames visible from 3rd floor window at midnight",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "LPG cylinder leaking badly, afraid it will explode",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Smoke coming from underground cable near bus stop",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Small fire in open ground near petrol station",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Crackers burst inside house causing fire",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Forest fire visible from highway near Vikarabad",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Electric sparks from junction box in heavy rain",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Canteen fire in college building",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Burning tyre smell from industrial area nearby",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Transformer catching fire near residential block",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "School laboratory fire due to chemical experiment",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Old thatched house caught fire due to short circuit",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Multiple injuries in truck collision on expressway",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Old woman not breathing properly, possible cardiac arrest",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Child swallowed unknown medicine, parents panicking",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Worker fell into deep pit at construction site",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Accident victim lying on road, no one helping",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Person having severe allergic reaction",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Suicide attempt near lake, person rescued but unconscious",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Teen collapsed after marathon in scorching heat",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Pregnant woman in emergency, nearest hospital far",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Multiple people fainted in closed room, gas suspected",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Serious fall from tree by worker, spine injury suspected",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Student lost consciousness during exam",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Road accident near flyover, 4 people injured",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Child burned by hot water, severe blisters",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Old man with chest pain and sweating",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Sewage spilling onto road near Tarnaka underpass",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Water connection given to wrong house, ours still pending",
+    "expected_category": "Water",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Pipeline burst near hospital causing water disruption",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Rainwater not draining properly flooding entire road",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Bore water motor stolen, colony has no water",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Leaking tap at public hand pump wasting water",
+    "expected_category": "Water",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Open drainage in front of house causing foul smell",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Water supply schedule not followed, irregular timing",
+    "expected_category": "Water",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Drains not cleaned before monsoon, flooding risk",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Water bill extremely high despite no excess usage",
+    "expected_category": "Water",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Sewage line broken under new road construction",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Algae growth in overhead tank, water quality issue",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Old pipeline corroding, rust in water visible",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Water logging near underpass during rain",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Illegal water connection taken from main pipeline",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Frequent tripping of MCB in entire apartment",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "No power in hospital ward, backup generator failing",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Children playing near broken electric pole",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Electric cable cut by tree fall, hanging on road",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Smart meter not working, bill estimated incorrectly",
+    "expected_category": "Electricity",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Power supply to entire zone cut for 24 hours no reason given",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Electricity restored but very low voltage",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Sparking sound from distribution box in colony",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Street light on even during daytime wasting electricity",
+    "expected_category": "Electricity",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "New connection applied 6 months ago, no progress",
+    "expected_category": "Electricity",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "High tension wire passing too close to terrace",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Underground cable tripped power for 3 days",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Electricity pole base damaged by water, leaning badly",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Illegal power theft happening in adjacent building",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Power cut affecting water pumping in summer",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Bag snatching near vegetable market in broad daylight",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Road rage incident, person threatening with weapon",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Unknown persons taking photos of school from outside fence",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Robbery at jewellery shop, thieves still in area",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Person missing since yesterday, family very worried",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Illegal hooch shop running near school",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Cheating case, builder took money and ran away",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Stone pelting on vehicles passing through a locality",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Woman followed home by unknown person on bike",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Argument between neighbours turned violent",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Illegal arms found in abandoned vehicle",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Smuggled goods being transported at night",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Children being used to beg forcefully by adults",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Fake currency notes being circulated in market",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Loan shark threatening family for repayment",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Newly tarred road already has deep potholes after rain",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Barricades removed from road repair site, dangerous at night",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Bridge railing broken, risk of vehicles falling",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Traffic signal showing green on all sides simultaneously",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Unauthorized construction blocking emergency vehicle access",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Road cave-in due to water pipeline leak beneath",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Old compound wall of school crumbling, children at risk",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Road full of potholes near government hospital",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Footpath blocked by vehicles parked illegally permanently",
+    "expected_category": "Infrastructure",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Construction without safety measures near busy market",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Unpainted pedestrian crossing causing accidents",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Broken drain cover on road, fell into it at night",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "One-way road being used wrong way due to missing signboard",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Height barrier on road too low, buses getting stuck",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Old heritage building showing cracks, needs inspection",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Rotting vegetable waste near market not collected for days",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Stray dog bit child in park, no animal control",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Garbage bins not sanitized, spreading disease in colony",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Dead rat near bakery shop, health hazard",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Open defecation near water body contaminating it",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Pig menace in residential area, attacking people",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Maggots visible in uncollected garbage near apartment",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Hospital not disposing medical waste properly",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Flies everywhere near meat shop, no hygiene maintained",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Street sweeper cleaning but pushing garbage into drain",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Monkey menace in colony stealing food and damaging property",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Abandoned construction site becoming garbage dumping ground",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Decomposing garbage smell entering homes near dump yard",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Cats giving birth near garbage area, kittens dying",
+    "expected_category": "Sanitation",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Used syringes found near park, drug use suspected",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Noise from party going beyond midnight regularly",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Illegal hoarding blocking road visibility",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Unidentified chemical smell from nearby factory",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Request for water tanker during summer shortage",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Objection to unauthorized religious structure on road",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Electricity department office not issuing NOC for months",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Cruelty to animals witnessed near slaughterhouse",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Complaint about fake ration cards in our area",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Manhole cover missing near school entrance",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Tree needs to be trimmed as branches touching wires",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Request for installation of CCTV in market area",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Complaint about parking charges being overcharged",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Unregistered vehicles operating as school vans",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Request for ramp outside government office for disabled",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Illegal sand mining near river bank at night",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Burning of plastic near residential area, toxic fumes",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Fire extinguisher in building expired, need replacement",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Smoke alarm ringing in apartment but no fire seen",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Oil spill on road near fuel station, fire risk",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Bonfire too close to building during festival",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Cylinder shop fire, many cylinders stored inside",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Matchstick factory fire, workers evacuating",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Cable fire spreading through building shaft",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Burning smell from lift motor room",
+    "expected_category": "Fire",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Old newspapers shop fire in market alley",
+    "expected_category": "Fire",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Person collapsed in ATM booth, door locked",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Dog bite victim child, need rabies injection urgently",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Accident at railway level crossing, person under train",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Food allergy reaction at restaurant, person vomiting",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Elderly man fell from bicycle, head injury",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Student burned by acid in chemistry lab",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Person having panic attack on public bus",
+    "expected_category": "Medical",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Builder worker heat exhaustion on roof in summer",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Woman fainted at bus stop in afternoon heat",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Overturned vehicle, passengers need emergency help",
+    "expected_category": "Medical",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Corporation supply water brown coloured for 3 days",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Rain water entering house through broken drain",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Water pump stolen from borewell, colony affected",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Sewage mixed with rainwater flooding street",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Drinking water supply pipe too close to sewage line",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "No water in government school, children suffering",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Private water tanker mafia charging excess rates",
+    "expected_category": "Water",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Storm water drain blocked by construction debris",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Tap water causing skin rashes in our family",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Underground water table contaminated near factory",
+    "expected_category": "Water",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "High tension tower near school is rusting badly",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Electric shock from metal gate during rain",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Power cut affecting dialysis patients in area",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Electricity theft causing low voltage for others",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Birds nesting in transformer causing frequent trips",
+    "expected_category": "Electricity",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Electric shock from swimming pool pump",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Cable burned due to overloading, 3 houses without power",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Power failure in traffic signals during peak hour",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Solar street lights not working in new layout",
+    "expected_category": "Electricity",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Worker received shock while repairing earthing",
+    "expected_category": "Electricity",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Extortion calls received by businessman in our area",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Burglary in house while owners on vacation",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Rash driving by drunk youth near school zone",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Domestic abuse sounds heard from ground floor flat",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Senior citizen cheated by fake bank officers",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Mobile phone stolen in crowded metro station",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Kidnapping attempt on school child averted by public",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Illegal firearm seen with person in our locality",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Gang fight near railway station at night",
+    "expected_category": "Police",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Vehicle tyres slashed in parking area repeatedly",
+    "expected_category": "Police",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Water tanker truck fell into pothole damaging road further",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Temporary road diversion not properly marked, accidents happening",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Old government building roof collapsed partially",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Median on highway broken allowing wrong-side traffic",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Pedestrian overbridge steps cracked and dangerous",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Railway crossing gate broken, no manual watchman",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Public park wall collapsed after heavy rain",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Water pipe burst damaging newly laid road",
+    "expected_category": "Infrastructure",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Road encroachment by shop owner reducing lane width",
+    "expected_category": "Infrastructure",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Street name boards missing in new residential layout",
+    "expected_category": "Infrastructure",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Mosquito larvae in rooftop tank of apartment",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Cockroach infestation spreading in housing society",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Rabid dog spotted in our area, biting animals",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Burning of garbage releasing toxic smoke near school",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Garbage compactor not coming to our street for 2 weeks",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Dead cow on roadside not removed for 2 days",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Rats entering houses from open drain near colony",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Dengue cases rising in our area, fogging needed",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Sanitary napkins dumped in open area near temple",
+    "expected_category": "Sanitation",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Diseased stray animals roaming market area",
+    "expected_category": "Sanitation",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Fake doctor operating clinic without certificate",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Child labour seen in tea stall near school",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Flood warning siren not working in our area",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Stone quarrying blast near village disturbing residents",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Helpline number for civic complaints not working",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Street artist removing heritage wall painting",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Request for more frequent garbage collection schedule",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Community hall booked illegally for private party",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "School van overloading children dangerously",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Lost child found near bus stand needs help",
+    "expected_category": "Other",
+    "expected_priority": "HIGH"
+  },
+  {
+    "text": "Unattended construction machinery on public road",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Begging mafia operating in traffic signals",
+    "expected_category": "Other",
+    "expected_priority": "MEDIUM"
+  },
+  {
+    "text": "Neighbour dumping building material on shared driveway",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Request for installation of public dustbins",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  },
+  {
+    "text": "Pothole data needed for road condition survey",
+    "expected_category": "Other",
+    "expected_priority": "LOW"
+  }
+]

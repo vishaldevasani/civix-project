@@ -1,0 +1,862 @@
+{
+  "complaints": [
+    {
+      "id": "ID-6",
+      "text": "Gas Leak / Cylinder Burst",
+      "category": "Fire",
+      "priority": "HIGH",
+      "reasoning": "⚠️ CRITICAL [Fire]: High-risk indicators detected — [gas leak, cylinder burst, cylinder]. Immediate response dispatched. SLA: 1h. Fire Department alerted.",
+      "confidence": 0.97,
+      "subcategory": "Gas Leak",
+      "department": "Fire Department",
+      "status": "Resolved",
+      "location": {
+        "area": "17.550, 78.166",
+        "address": "17.550, 78.166",
+        "lat": 17.549976,
+        "lon": 78.166399
+      },
+      "contactEmail": "vishaldevasani67@gmail.com",
+      "contactPhone": null,
+      "timestamp": "2026-03-24T13:03:20.557Z",
+      "slaDeadline": "2026-03-24T14:03:20.557Z",
+      "slaHours": 1,
+      "escalated": false,
+      "updates": [
+        {
+          "status": "Resolved",
+          "note": "Updated",
+          "timestamp": "2026-03-24T13:04:08.102Z",
+          "updatedBy": "Admin"
+        }
+      ],
+      "upvotes": 0,
+      "assignedTo": "Admin"
+    },
+    {
+      "id": "ID-5",
+      "text": "street light now working",
+      "category": "Electricity",
+      "priority": "MEDIUM",
+      "reasoning": "ℹ️ STANDARD [Electricity]: Routine civic issue — [light, working, street]. Queued for Electricity Board. SLA: 72h.",
+      "confidence": 0.97,
+      "subcategory": null,
+      "department": "Electricity Board",
+      "status": "Resolved",
+      "location": {
+        "area": "17.550, 78.166",
+        "address": "17.550, 78.166",
+        "lat": 17.550046,
+        "lon": 78.166443
+      },
+      "contactEmail": "jaibalayyatfi@gmail.com",
+      "contactPhone": null,
+      "timestamp": "2026-03-24T07:34:06.935Z",
+      "updates": [
+        {
+          "status": "In Progress",
+          "note": "Updated",
+          "timestamp": "2026-03-24T07:35:36.169Z",
+          "updatedBy": "Admin"
+        },
+        {
+          "status": "Resolved",
+          "note": "thank you",
+          "timestamp": "2026-03-24T07:35:55.237Z",
+          "updatedBy": "Admin"
+        }
+      ],
+      "upvotes": 0,
+      "assignedTo": "Admin"
+    },
+    {
+      "id": "ID-4",
+      "text": "accident of a person",
+      "category": "Medical",
+      "priority": "MEDIUM",
+      "reasoning": "⚠️ CRITICAL [Medical]: High-risk indicators detected — [accident, person]. Immediate response dispatched. SLA: 1h. Medical Emergency alerted.",
+      "confidence": 0.97,
+      "subcategory": null,
+      "department": "Medical Emergency",
+      "status": "Resolved",
+      "location": {
+        "area": "17.550, 78.166",
+        "address": "17.550, 78.166",
+        "lat": 17.550016,
+        "lon": 78.166428
+      },
+      "contactEmail": "vishaldevasani67@gmail.com",
+      "contactPhone": null,
+      "timestamp": "2026-03-24T07:25:11.343Z",
+      "updates": [
+        {
+          "status": "In Progress",
+          "note": "Updated",
+          "timestamp": "2026-03-24T07:27:53.854Z",
+          "updatedBy": "Admin"
+        },
+        {
+          "status": "Resolved",
+          "note": "Updated",
+          "timestamp": "2026-03-24T07:28:05.580Z",
+          "updatedBy": "Admin"
+        }
+      ],
+      "upvotes": 0,
+      "assignedTo": "Admin",
+      "internalNotes": [
+        {
+          "note": "your  complaint has been solved thank you",
+          "by": "Admin",
+          "timestamp": "2026-03-24T07:31:40.340Z"
+        }
+      ]
+    },
+    {
+      "id": "ID-3",
+      "text": "sreet light not working",
+      "category": "Electricity",
+      "priority": "LOW",
+      "reasoning": "ℹ️ STANDARD [Electricity]: Routine civic issue — [light]. Queued for Electricity Board. SLA: 72h.",
+      "confidence": 0.97,
+      "subcategory": null,
+      "department": "Electricity Board",
+      "status": "Resolved",
+      "location": {
+        "area": null,
+        "address": null,
+        "lat": null,
+        "lon": null
+      },
+      "contactEmail": null,
+      "contactPhone": null,
+      "timestamp": "2026-03-21T06:45:40.342Z",
+      "updates": [
+        {
+          "status": "Resolved",
+          "note": "Updated",
+          "timestamp": "2026-03-21T06:47:23.764Z",
+          "updatedBy": "Admin"
+        }
+      ],
+      "upvotes": 0,
+      "assignedTo": "Admin"
+    },
+    {
+      "id": "ID-2",
+      "text": "water leakage",
+      "category": "Water",
+      "priority": "MEDIUM",
+      "reasoning": "⚡ MODERATE [Water]: Prompt attention required — [water, leak]. Routed to Water Authority. SLA: 24h.",
+      "confidence": 0.97,
+      "subcategory": null,
+      "department": "Water Authority",
+      "status": "Resolved",
+      "location": {
+        "area": "18.769, 79.510",
+        "address": "18.769, 79.510",
+        "lat": 18.768982,
+        "lon": 79.509811
+      },
+      "contactEmail": null,
+      "contactPhone": null,
+      "timestamp": "2026-03-21T06:40:54.667Z",
+      "updates": [
+        {
+          "status": "Resolved",
+          "note": "Updated",
+          "timestamp": "2026-03-21T06:42:24.553Z",
+          "updatedBy": "Admin"
+        }
+      ],
+      "upvotes": 0,
+      "assignedTo": "Admin"
+    },
+    {
+      "id": "ID-1",
+      "text": "there is a huge fire near my house",
+      "category": "Fire",
+      "priority": "HIGH",
+      "reasoning": "⚠️ CRITICAL [Fire]: High-risk indicators detected — [fire]. Immediate response dispatched. SLA: 1h. Fire Department alerted.",
+      "confidence": 0.97,
+      "subcategory": "Structure Fire",
+      "department": "Fire Department",
+      "status": "Resolved",
+      "location": {
+        "area": "18.769, 79.510",
+        "address": "18.769, 79.510",
+        "lat": 18.768903,
+        "lon": 79.509756
+      },
+      "contactEmail": "vishaldevasani67@gmail.com",
+      "contactPhone": null,
+      "timestamp": "2026-03-21T06:34:33.810Z",
+      "updates": [
+        {
+          "status": "Resolved",
+          "note": "Updated",
+          "timestamp": "2026-03-21T06:37:43.433Z",
+          "updatedBy": "Admin"
+        }
+      ],
+      "upvotes": 0,
+      "assignedTo": "Admin"
+    }
+  ],
+  "alerts": [
+    {
+      "id": "ALT-0035",
+      "type": "system",
+      "message": "✅ ID-6 resolved by Admin",
+      "priority": "LOW",
+      "timestamp": "2026-03-24T13:04:08.102Z",
+      "read": true,
+      "complaintId": "ID-6"
+    },
+    {
+      "id": "ALT-0034",
+      "type": "complaint",
+      "message": "🚨 HIGH: Fire — Gas Leak / Cylinder Burst",
+      "priority": "HIGH",
+      "timestamp": "2026-03-24T13:03:20.558Z",
+      "read": true,
+      "complaintId": "ID-6"
+    },
+    {
+      "id": "ALT-0033",
+      "type": "disaster",
+      "message": "🌍 EARTHQUAKE M4.2: 88 km SE of Phek, India",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-24T10:19:55.652Z",
+      "read": true,
+      "disasterId": "DIS-1404691f",
+      "location": "88 km SE of Phek, India"
+    },
+    {
+      "id": "ALT-0032",
+      "type": "disaster",
+      "message": "🌍 EARTHQUAKE M4: 206 km NW of Nagqu, China",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-24T10:19:55.652Z",
+      "read": true,
+      "disasterId": "DIS-ecc53ea9",
+      "location": "206 km NW of Nagqu, China"
+    },
+    {
+      "id": "ALT-0031",
+      "type": "disaster",
+      "message": "🌊 FLOOD ALERT: Urban flooding in Hyderabad, Telangana — HIGH severity",
+      "priority": "HIGH",
+      "timestamp": "2026-03-24T10:19:54.433Z",
+      "read": true,
+      "disasterId": "DIS-SAMPLE-001",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0030",
+      "type": "disaster",
+      "message": "🌍 EARTHQUAKE M4.2: 88 km SE of Phek, India",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-24T08:48:22.549Z",
+      "read": true,
+      "disasterId": "DIS-6f8f6b43",
+      "location": "88 km SE of Phek, India"
+    },
+    {
+      "id": "ALT-0029",
+      "type": "disaster",
+      "message": "🌍 EARTHQUAKE M4: 206 km NW of Nagqu, China",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-24T08:48:22.549Z",
+      "read": true,
+      "disasterId": "DIS-befde9cb",
+      "location": "206 km NW of Nagqu, China"
+    },
+    {
+      "id": "ALT-0028",
+      "type": "disaster",
+      "message": "🌊 FLOOD ALERT: Urban flooding in Hyderabad, Telangana — HIGH severity",
+      "priority": "HIGH",
+      "timestamp": "2026-03-24T08:48:21.705Z",
+      "read": true,
+      "disasterId": "DIS-SAMPLE-001",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0027",
+      "type": "disaster",
+      "message": "🌍 EARTHQUAKE M4.2: 88 km SE of Phek, India",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-24T08:08:35.955Z",
+      "read": true,
+      "disasterId": "DIS-47713e36",
+      "location": "88 km SE of Phek, India"
+    },
+    {
+      "id": "ALT-0026",
+      "type": "disaster",
+      "message": "🌍 EARTHQUAKE M4: 206 km NW of Nagqu, China",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-24T08:08:35.955Z",
+      "read": true,
+      "disasterId": "DIS-044c6800",
+      "location": "206 km NW of Nagqu, China"
+    },
+    {
+      "id": "ALT-0025",
+      "type": "disaster",
+      "message": "🌊 FLOOD ALERT: Urban flooding in Hyderabad, Telangana — HIGH severity",
+      "priority": "HIGH",
+      "timestamp": "2026-03-24T08:08:35.277Z",
+      "read": true,
+      "disasterId": "DIS-SAMPLE-001",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0024",
+      "type": "disaster",
+      "message": "⚠️ MANUAL ALERT: Flood in Hyderabad, Telangana",
+      "priority": "HIGH",
+      "timestamp": "2026-03-24T07:36:55.979Z",
+      "read": true,
+      "disasterId": "DIS-MANUAL-1774337815979",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0023",
+      "type": "system",
+      "message": "✅ ID-5 resolved by Admin",
+      "priority": "LOW",
+      "timestamp": "2026-03-24T07:35:55.237Z",
+      "read": true,
+      "complaintId": "ID-5"
+    },
+    {
+      "id": "ALT-0022",
+      "type": "system",
+      "message": "⚠️ ID-5 priority changed: LOW → MEDIUM",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-24T07:35:22.897Z",
+      "read": true,
+      "complaintId": "ID-5"
+    },
+    {
+      "id": "ALT-0021",
+      "type": "complaint",
+      "message": "ℹ️ LOW: Electricity — street light now working",
+      "priority": "LOW",
+      "timestamp": "2026-03-24T07:34:06.935Z",
+      "read": true,
+      "complaintId": "ID-5"
+    },
+    {
+      "id": "ALT-0020",
+      "type": "disaster",
+      "message": "⚠️ MANUAL ALERT: Flood in Hyderabad, Telangana",
+      "priority": "HIGH",
+      "timestamp": "2026-03-24T07:29:46.419Z",
+      "read": true,
+      "disasterId": "DIS-MANUAL-1774337386419",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0019",
+      "type": "system",
+      "message": "✅ ID-4 resolved by Admin",
+      "priority": "LOW",
+      "timestamp": "2026-03-24T07:28:05.580Z",
+      "read": true,
+      "complaintId": "ID-4"
+    },
+    {
+      "id": "ALT-0018",
+      "type": "system",
+      "message": "⚠️ ID-4 priority changed: HIGH → MEDIUM",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-24T07:27:43.769Z",
+      "read": true,
+      "complaintId": "ID-4"
+    },
+    {
+      "id": "ALT-0017",
+      "type": "complaint",
+      "message": "🚨 HIGH: Medical — accident of a person",
+      "priority": "HIGH",
+      "timestamp": "2026-03-24T07:25:11.343Z",
+      "read": true,
+      "complaintId": "ID-4"
+    },
+    {
+      "id": "ALT-0016",
+      "type": "disaster",
+      "message": "🌍 EARTHQUAKE M4.2: 88 km SE of Phek, India",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-24T07:24:01.415Z",
+      "read": true,
+      "disasterId": "DIS-78c12cb9",
+      "location": "88 km SE of Phek, India"
+    },
+    {
+      "id": "ALT-0015",
+      "type": "disaster",
+      "message": "🌍 EARTHQUAKE M4: 206 km NW of Nagqu, China",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-24T07:24:01.415Z",
+      "read": true,
+      "disasterId": "DIS-7c06f0c5",
+      "location": "206 km NW of Nagqu, China"
+    },
+    {
+      "id": "ALT-0014",
+      "type": "disaster",
+      "message": "🌊 FLOOD ALERT: Urban flooding in Hyderabad, Telangana — HIGH severity",
+      "priority": "HIGH",
+      "timestamp": "2026-03-24T07:24:00.679Z",
+      "read": true,
+      "disasterId": "DIS-SAMPLE-001",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0013",
+      "type": "disaster",
+      "message": "🌊 FLOOD ALERT: Urban flooding in Hyderabad, Telangana — HIGH severity",
+      "priority": "HIGH",
+      "timestamp": "2026-03-21T07:18:22.109Z",
+      "read": true,
+      "disasterId": "DIS-SAMPLE-001",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0012",
+      "type": "disaster",
+      "message": "🌊 FLOOD ALERT: Urban flooding in Hyderabad, Telangana — HIGH severity",
+      "priority": "HIGH",
+      "timestamp": "2026-03-21T07:11:17.672Z",
+      "read": true,
+      "disasterId": "DIS-SAMPLE-001",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0011",
+      "type": "disaster",
+      "message": "🌊 FLOOD ALERT: Urban flooding in Hyderabad, Telangana — HIGH severity",
+      "priority": "HIGH",
+      "timestamp": "2026-03-21T06:59:42.220Z",
+      "read": true,
+      "disasterId": "DIS-SAMPLE-001",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0010",
+      "type": "disaster",
+      "message": "⚠️ MANUAL ALERT: Flood in Hyderabad, Telangana",
+      "priority": "HIGH",
+      "timestamp": "2026-03-21T06:55:23.461Z",
+      "read": true,
+      "disasterId": "DIS-MANUAL-1774076123461",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0009",
+      "type": "disaster",
+      "message": "🌊 FLOOD ALERT: Urban flooding in Hyderabad, Telangana — HIGH severity",
+      "priority": "HIGH",
+      "timestamp": "2026-03-21T06:54:34.916Z",
+      "read": true,
+      "disasterId": "DIS-SAMPLE-001",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0008",
+      "type": "system",
+      "message": "✅ ID-3 resolved by Admin",
+      "priority": "LOW",
+      "timestamp": "2026-03-21T06:47:23.764Z",
+      "read": true,
+      "complaintId": "ID-3"
+    },
+    {
+      "id": "ALT-0007",
+      "type": "complaint",
+      "message": "ℹ️ LOW: Electricity — sreet light not working",
+      "priority": "LOW",
+      "timestamp": "2026-03-21T06:45:40.342Z",
+      "read": true,
+      "complaintId": "ID-3"
+    },
+    {
+      "id": "ALT-0006",
+      "type": "disaster",
+      "message": "🌊 FLOOD ALERT: Urban flooding in Hyderabad, Telangana — HIGH severity",
+      "priority": "HIGH",
+      "timestamp": "2026-03-21T06:45:13.484Z",
+      "read": true,
+      "disasterId": "DIS-SAMPLE-001",
+      "location": "Hyderabad, Telangana"
+    },
+    {
+      "id": "ALT-0005",
+      "type": "system",
+      "message": "✅ ID-2 resolved by Admin",
+      "priority": "LOW",
+      "timestamp": "2026-03-21T06:42:24.553Z",
+      "read": true,
+      "complaintId": "ID-2"
+    },
+    {
+      "id": "ALT-0004",
+      "type": "complaint",
+      "message": "⚠️ MEDIUM: Water — water leakage",
+      "priority": "MEDIUM",
+      "timestamp": "2026-03-21T06:40:54.667Z",
+      "read": true,
+      "complaintId": "ID-2"
+    },
+    {
+      "id": "ALT-0003",
+      "type": "system",
+      "message": "✅ ID-1 resolved by Admin",
+      "priority": "LOW",
+      "timestamp": "2026-03-21T06:37:43.433Z",
+      "read": true,
+      "complaintId": "ID-1"
+    },
+    {
+      "id": "ALT-0002",
+      "type": "complaint",
+      "message": "🚨 HIGH: Fire — there is a huge fire near my house",
+      "priority": "HIGH",
+      "timestamp": "2026-03-21T06:34:33.810Z",
+      "read": true,
+      "complaintId": "ID-1"
+    },
+    {
+      "id": "ALT-0001",
+      "type": "disaster",
+      "message": "🌍 EARTHQUAKE M4.5: 37 km NE of Tagāb, Afghanistan",
+      "priority": "HIGH",
+      "timestamp": "2026-03-21T06:33:37.017Z",
+      "read": true,
+      "disasterId": "DIS-b4b5dd2a",
+      "location": "37 km NE of Tagāb, Afghanistan"
+    }
+  ],
+  "notifications": [
+    {
+      "channel": "disaster_alert",
+      "disasterId": "DIS-b4b5dd2a",
+      "location": "37 km NE of Tagāb, Afghanistan",
+      "usersNotified": 0,
+      "timestamp": "2026-03-21T06:33:39.272Z",
+      "status": "sent",
+      "type": "disaster"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-1",
+      "to": "whatsapp:+918328376205",
+      "message": "🚨 NEW COMPLAINT — Civix\n\n📋 ID: ID-1\n🏷️ Category: Fire\n⚠️ Priority: HIGH\n📝 there is a huge fire near my house\n📍 18.769, 79.510\n🗺️ Coords: 18.76890, 79.50976\n👤 vishaldevasani67@gmail.com\n🕐 21/3/2026, 12:04:33 pm",
+      "timestamp": "2026-03-21T06:34:34.345Z",
+      "status": "sent",
+      "type": "new_complaint"
+    },
+    {
+      "channel": "email",
+      "complaintId": "ID-1",
+      "to": "vishaldevasani67@gmail.com",
+      "subject": "Complaint Registered",
+      "timestamp": "2026-03-21T06:34:37.177Z",
+      "status": "sent",
+      "type": "new_complaint"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-1",
+      "to": "whatsapp:+918328376205",
+      "message": "✅ STATUS UPDATE — Civix\n\n📋 ID: ID-1\n🏷️ Fire\n📊 Pending → Resolved\n👤 By: Admin\n📝 Note: None\n🕐 21/3/2026, 12:07:43 pm",
+      "timestamp": "2026-03-21T06:37:43.845Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "email",
+      "complaintId": "ID-1",
+      "to": "vishaldevasani67@gmail.com",
+      "subject": "Status: Resolved",
+      "timestamp": "2026-03-21T06:37:46.404Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-2",
+      "to": "whatsapp:+918328376205",
+      "message": "⚠️ NEW COMPLAINT — Civix\n\n📋 ID: ID-2\n🏷️ Category: Water\n⚠️ Priority: MEDIUM\n📝 water leakage\n📍 18.769, 79.510\n🗺️ Coords: 18.76898, 79.50981\n👤 No contact\n🕐 21/3/2026, 12:10:54 pm",
+      "timestamp": "2026-03-21T06:40:55.584Z",
+      "status": "sent",
+      "type": "new_complaint"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-2",
+      "to": "whatsapp:+918328376205",
+      "message": "✅ STATUS UPDATE — Civix\n\n📋 ID: ID-2\n🏷️ Water\n📊 Pending → Resolved\n👤 By: Admin\n📝 Note: None\n🕐 21/3/2026, 12:12:24 pm",
+      "timestamp": "2026-03-21T06:42:25.012Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-3",
+      "to": "whatsapp:+918328376205",
+      "message": "ℹ️ NEW COMPLAINT — Civix\n\n📋 ID: ID-3\n🏷️ Category: Electricity\n⚠️ Priority: LOW\n📝 sreet light not working\n📍 Unknown\n🗺️ Coords: N/A\n👤 No contact\n🕐 21/3/2026, 12:15:40 pm",
+      "timestamp": "2026-03-21T06:45:41.406Z",
+      "status": "sent",
+      "type": "new_complaint"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-3",
+      "to": "whatsapp:+918328376205",
+      "message": "✅ STATUS UPDATE — Civix\n\n📋 ID: ID-3\n🏷️ Electricity\n📊 Pending → Resolved\n👤 By: Admin\n📝 Note: None\n🕐 21/3/2026, 12:17:23 pm",
+      "timestamp": "2026-03-21T06:47:24.619Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "manual_alert",
+      "disasterId": "DIS-MANUAL-1774076123461",
+      "to": "1 user(s)",
+      "location": "Hyderabad, Telangana",
+      "sentBy": "Super Admin",
+      "timestamp": "2026-03-21T06:55:27.549Z",
+      "status": "sent",
+      "type": "manual_alert"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-4",
+      "to": "whatsapp:+918328376205",
+      "message": "🚨 NEW COMPLAINT — Civix\n\n📋 ID: ID-4\n🏷️ Category: Medical\n⚠️ Priority: HIGH\n📝 accident of a person\n📍 17.550, 78.166\n🗺️ Coords: 17.55002, 78.16643\n👤 vishaldevasani67@gmail.com\n🕐 24/3/2026, 12:55:11 pm",
+      "timestamp": "2026-03-24T07:25:12.440Z",
+      "status": "sent",
+      "type": "new_complaint"
+    },
+    {
+      "channel": "email",
+      "complaintId": "ID-4",
+      "to": "vishaldevasani67@gmail.com",
+      "subject": "Complaint Registered",
+      "timestamp": "2026-03-24T07:25:15.053Z",
+      "status": "sent",
+      "type": "new_complaint"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-4",
+      "to": "whatsapp:+918328376205",
+      "message": "🔄 STATUS UPDATE — Civix\n\n📋 ID: ID-4\n🏷️ Medical\n📊 Pending → In Progress\n👤 By: Admin\n📝 Note: None\n🕐 24/3/2026, 12:57:53 pm",
+      "timestamp": "2026-03-24T07:27:54.299Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "email",
+      "complaintId": "ID-4",
+      "to": "vishaldevasani67@gmail.com",
+      "subject": "Status: In Progress",
+      "timestamp": "2026-03-24T07:27:56.684Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-4",
+      "to": "whatsapp:+918328376205",
+      "message": "✅ STATUS UPDATE — Civix\n\n📋 ID: ID-4\n🏷️ Medical\n📊 In Progress → Resolved\n👤 By: Admin\n📝 Note: None\n🕐 24/3/2026, 12:58:05 pm",
+      "timestamp": "2026-03-24T07:28:05.933Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "email",
+      "complaintId": "ID-4",
+      "to": "vishaldevasani67@gmail.com",
+      "subject": "Status: Resolved",
+      "timestamp": "2026-03-24T07:28:08.261Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "manual_alert",
+      "disasterId": "DIS-MANUAL-1774337386419",
+      "to": "1 user(s)",
+      "location": "Hyderabad, Telangana",
+      "sentBy": "Super Admin",
+      "timestamp": "2026-03-24T07:29:49.542Z",
+      "status": "sent",
+      "type": "manual_alert"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-5",
+      "to": "whatsapp:+918328376205",
+      "message": "ℹ️ NEW COMPLAINT — Civix\n\n📋 ID: ID-5\n🏷️ Category: Electricity\n⚠️ Priority: LOW\n📝 street light now working\n📍 17.550, 78.166\n🗺️ Coords: 17.55005, 78.16644\n👤 jaibalayyatfi@gmail.com\n🕐 24/3/2026, 1:04:06 pm",
+      "timestamp": "2026-03-24T07:34:07.488Z",
+      "status": "sent",
+      "type": "new_complaint"
+    },
+    {
+      "channel": "email",
+      "complaintId": "ID-5",
+      "to": "jaibalayyatfi@gmail.com",
+      "subject": "Complaint Registered",
+      "timestamp": "2026-03-24T07:34:09.946Z",
+      "status": "sent",
+      "type": "new_complaint"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-5",
+      "to": "whatsapp:+918328376205",
+      "message": "🔄 STATUS UPDATE — Civix\n\n📋 ID: ID-5\n🏷️ Electricity\n📊 Pending → In Progress\n👤 By: Admin\n📝 Note: None\n🕐 24/3/2026, 1:05:36 pm",
+      "timestamp": "2026-03-24T07:35:36.544Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "email",
+      "complaintId": "ID-5",
+      "to": "jaibalayyatfi@gmail.com",
+      "subject": "Status: In Progress",
+      "timestamp": "2026-03-24T07:35:39.244Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-5",
+      "to": "whatsapp:+918328376205",
+      "message": "✅ STATUS UPDATE — Civix\n\n📋 ID: ID-5\n🏷️ Electricity\n📊 In Progress → Resolved\n👤 By: Admin\n📝 Note: thank you\n🕐 24/3/2026, 1:05:55 pm",
+      "timestamp": "2026-03-24T07:35:55.641Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "email",
+      "complaintId": "ID-5",
+      "to": "jaibalayyatfi@gmail.com",
+      "subject": "Status: Resolved",
+      "timestamp": "2026-03-24T07:35:58.021Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "manual_alert",
+      "disasterId": "DIS-MANUAL-1774337815979",
+      "to": "2 user(s)",
+      "location": "Hyderabad, Telangana",
+      "sentBy": "Super Admin",
+      "timestamp": "2026-03-24T07:37:01.019Z",
+      "status": "sent",
+      "type": "manual_alert"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-6",
+      "to": "whatsapp:+918328376205",
+      "message": "🚨 NEW COMPLAINT — Civix\n\n📋 ID: ID-6\n🏷️ Category: Fire\n⚠️ Priority: HIGH\n📝 Gas Leak / Cylinder Burst\n📍 17.550, 78.166\n🗺️ Coords: 17.54998, 78.16640\n👤 vishaldevasani67@gmail.com\n🕐 24/3/2026, 6:33:20 pm",
+      "timestamp": "2026-03-24T13:03:21.501Z",
+      "status": "sent",
+      "type": "new_complaint"
+    },
+    {
+      "channel": "email",
+      "complaintId": "ID-6",
+      "to": "vishaldevasani67@gmail.com",
+      "subject": "Complaint Registered",
+      "timestamp": "2026-03-24T13:03:25.112Z",
+      "status": "sent",
+      "type": "new_complaint"
+    },
+    {
+      "channel": "whatsapp",
+      "complaintId": "ID-6",
+      "to": "whatsapp:+918328376205",
+      "message": "✅ STATUS UPDATE — Civix\n\n📋 ID: ID-6\n🏷️ Fire\n📊 Pending → Resolved\n👤 By: Admin\n📝 Note: None\n🕐 24/3/2026, 6:34:08 pm",
+      "timestamp": "2026-03-24T13:04:08.567Z",
+      "status": "sent",
+      "type": "status_update"
+    },
+    {
+      "channel": "email",
+      "complaintId": "ID-6",
+      "to": "vishaldevasani67@gmail.com",
+      "subject": "Status: Resolved",
+      "timestamp": "2026-03-24T13:04:11.598Z",
+      "status": "sent",
+      "type": "status_update"
+    }
+  ],
+  "departments": {
+    "Fire": {
+      "name": "Fire Department",
+      "head": "Admin",
+      "contact": "+918328376205",
+      "email": "darksun6762@gmail.com",
+      "count": 2
+    },
+    "Medical": {
+      "name": "Medical Emergency",
+      "head": "Admin",
+      "contact": "+918328376205",
+      "email": "darksun6762@gmail.com",
+      "count": 1
+    },
+    "Water": {
+      "name": "Water Authority",
+      "head": "Admin",
+      "contact": "+918328376205",
+      "email": "darksun6762@gmail.com",
+      "count": 1
+    },
+    "Electricity": {
+      "name": "Electricity Board",
+      "head": "Admin",
+      "contact": "+918328376205",
+      "email": "darksun6762@gmail.com",
+      "count": 2
+    },
+    "Police": {
+      "name": "Police Department",
+      "head": "Admin",
+      "contact": "+918328376205",
+      "email": "darksun6762@gmail.com",
+      "count": 0
+    },
+    "Infrastructure": {
+      "name": "PWD / Roads",
+      "head": "Admin",
+      "contact": "+918328376205",
+      "email": "darksun6762@gmail.com",
+      "count": 0
+    },
+    "Sanitation": {
+      "name": "Municipal Corporation",
+      "head": "Admin",
+      "contact": "+918328376205",
+      "email": "darksun6762@gmail.com",
+      "count": 0
+    },
+    "Other": {
+      "name": "General Services",
+      "head": "Admin",
+      "contact": "+918328376205",
+      "email": "darksun6762@gmail.com",
+      "count": 0
+    }
+  },
+  "idCounter": 7,
+  "alertCounter": 36,
+  "savedAt": "2026-03-24T13:11:54.957Z"
+}

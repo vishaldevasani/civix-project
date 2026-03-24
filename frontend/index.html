@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Civix — Smart Civic Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Leaflet for Heatmap -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<!-- jsPDF for PDF export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<style>
+:root {
+  --bg:       #0a0e1a; --surface: #111827; --panel: #1a2235; --card: #1e2a3e;
+  --border:   rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
+  --text:     #e2e8f0; --text2: #94a3b8; --muted: #4b5563;
+  --accent:   #6366f1; --accent2: #8b5cf6; --cyan: #06b6d4;
+  --green:    #10b981; --red: #ef4444; --orange: #f97316; --yellow: #eab308;
+  --high:     #ef4444; --med: #f97316; --low: #10b981;
+  --radius:   12px; --shadow: 0 4px 24px rgba(0,0,0,0.35);
+  --trans:    all 0.2s ease;
+}
+[data-theme="light"] {
+  --bg:       #f8fafc; --surface: #ffffff; --panel: #f1f5f9; --card: #ffffff;
+  --border:   rgba(0,0,0,0.08); --border2: rgba(0,0,0,0.14);
+  --text:     #0f172a; --text2: #475569; --muted: #94a3b8;
+  --shadow:   0 4px 24px rgba(0,0,0,0.10);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; transition:background 0.3s; background-image: radial-gradient(ellipse at 15% 40%, rgba(99,102,241,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 15%, rgba(139,92,246,0.04) 0%, transparent 50%); }
+
+/* ── TOPBAR ── */
+.topbar { position:sticky; top:0; z-index:100; background:var(--surface); border-bottom:1px solid rgba(212,175,55,0.18); padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:60px; backdrop-filter:blur(12px); }
+.brand { display:flex; align-items:center; gap:10px; }
+.brand-logo { width:34px; height:34px; background:linear-gradient(135deg,#4f46e5,#6366f1); border-radius:8px; box-shadow:0 2px 12px rgba(99,102,241,0.25); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:900; color:white; }
+.brand-name { font-size:1.25rem; font-weight:700; letter-spacing:1px; font-weight:800; background:linear-gradient(135deg,#4f46e5,#6366f1,#8b5cf6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:none; }
+.topbar-right { display:flex; align-items:center; gap:12px; }
+.icon-btn { width:36px; height:36px; border-radius:8px; background:var(--panel); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text2); transition:var(--trans); position:relative; }
+.icon-btn:hover { background:var(--card); color:var(--text); }
+.notif-badge { position:absolute; top:-4px; right:-4px; background:var(--red); color:white; font-size:9px; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center; display:none; }
+
+/* ── NOTIFICATION PANEL ── */
+.notif-panel { position:fixed; top:68px; right:16px; width:360px; max-height:480px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); z-index:200; display:none; flex-direction:column; overflow:hidden; }
+.notif-panel.open { display:flex; }
+.notif-head { padding:14px 16px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.notif-head span { font-weight:600; font-size:0.9rem; }
+.notif-list { overflow-y:auto; flex:1; }
+.notif-item { padding:12px 16px; border-bottom:1px solid var(--border); display:flex; gap:10px; align-items:flex-start; font-size:0.82rem; cursor:pointer; transition:var(--trans); }
+.notif-item:hover { background:var(--panel); }
+.notif-dot2 { width:8px; height:8px; border-radius:50%; margin-top:4px; flex-shrink:0; }
+.dot-high   { background:var(--high); }
+.dot-med    { background:var(--med); }
+.dot-low    { background:var(--low); }
+.dot-info   { background:var(--cyan); }
+.notif-empty { padding:32px; text-align:center; color:var(--text2); font-size:0.85rem; }
+
+/* ── TABS ── */
+.tab-bar { display:flex; gap:4px; padding:20px 24px 0; border-bottom:1px solid var(--border); background:var(--surface); overflow-x:auto; }
+[data-theme="light"] .tab-bar { background:#fff; border-color:rgba(99,102,241,0.15); }
+.tab-btn { padding:10px 16px; border-radius:8px 8px 0 0; border:none; background:transparent; color:var(--text2); font-size:0.85rem; font-weight:500; cursor:pointer; transition:var(--trans); font-family:inherit; border-bottom:2px solid transparent; white-space:nowrap; }
+.tab-btn.active { color:var(--accent); border-bottom-color:var(--accent); background:rgba(99,102,241,0.07); }
+.tab-btn:hover:not(.active) { color:var(--text); background:var(--panel); }
+.tab-content { display:none; padding:24px; max-width:900px; margin:0 auto; }
+.tab-content.active { display:block; }
+
+/* ── CARDS ── */
+.card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; margin-bottom:16px; }
+.card-title { font-size:1rem; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
+.kpi { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; text-align:center; }
+.kpi-num { font-size:1.8rem; font-weight:800; font-family:'JetBrains Mono'; }
+.kpi-label { font-size:0.75rem; color:var(--text2); margin-top:2px; }
+
+/* ── FORM ── */
+.form-group { margin-bottom:16px; }
+label { display:block; font-size:0.8rem; font-weight:500; color:var(--text2); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px; }
+input, textarea, select { width:100%; background:var(--panel); border:1px solid var(--border); color:var(--text); padding:11px 14px; border-radius:8px; font-size:0.9rem; font-family:inherit; outline:none; transition:var(--trans); }
+input:focus, textarea:focus, select:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(99,102,241,0.15); }
+textarea { resize:vertical; min-height:100px; }
+.char-count { font-size:0.75rem; color:var(--text2); text-align:right; margin-top:4px; }
+.input-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.btn { padding:11px 22px; border-radius:8px; border:none; font-size:0.9rem; font-weight:600; cursor:pointer; font-family:inherit; transition:var(--trans); display:inline-flex; align-items:center; gap:8px; }
+.btn-primary { background:linear-gradient(135deg,#4f46e5,#6366f1,#8b5cf6); color:#fff; font-weight:700; box-shadow:0 4px 16px rgba(99,102,241,0.25); }
+.btn-primary:hover { opacity:0.9; transform:translateY(-1px); }
+.btn-primary:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+.btn-outline { background:transparent; color:var(--text2); border:1px solid var(--border); }
+.btn-outline:hover { background:var(--panel); color:var(--text); }
+.btn-sm { padding:6px 14px; font-size:0.8rem; }
+.btn-danger { background:rgba(239,68,68,0.15); color:var(--red); border:1px solid rgba(239,68,68,0.3); }
+.btn-danger:hover { background:rgba(239,68,68,0.25); }
+
+/* ── LOCATION ── */
+.loc-box { display:flex; gap:8px; align-items:flex-end; }
+.loc-box .form-group { flex:1; margin-bottom:0; }
+.coord-row { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px; }
+.loc-status { font-size:0.75rem; padding:6px 10px; border-radius:6px; margin-top:8px; display:none; }
+.loc-status.success { background:rgba(16,185,129,0.1); color:var(--green); display:block; }
+.loc-status.error   { background:rgba(239,68,68,0.1); color:var(--red); display:block; }
+
+/* ── RESULT CARD ── */
+.result-card { border-radius:var(--radius); padding:20px; display:none; margin-top:16px; }
+.result-card.show { display:block; animation:slideIn 0.3s ease; }
+@keyframes slideIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+.result-id { font-family:'JetBrains Mono'; font-size:1.5rem; font-weight:700; }
+.badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:0.3px; }
+.b-HIGH { background:rgba(239,68,68,0.15); color:var(--high); border:1px solid rgba(239,68,68,0.3); }
+.b-MEDIUM { background:rgba(249,115,22,0.15); color:var(--orange); border:1px solid rgba(249,115,22,0.3); }
+.b-LOW { background:rgba(16,185,129,0.15); color:var(--green); border:1px solid rgba(16,185,129,0.3); }
+.b-Pending    { background:rgba(234,179,8,0.15); color:var(--yellow); }
+.b-InProgress { background:rgba(99,102,241,0.15); color:var(--accent); }
+.b-Resolved   { background:rgba(16,185,129,0.15); color:var(--green); }
+.info-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+.info-item { background:var(--panel); border-radius:8px; padding:10px 12px; font-size:0.82rem; }
+.info-item .il { color:var(--text2); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.3px; }
+.info-item .iv { font-weight:600; margin-top:2px; }
+
+/* ── PROGRESS TIMELINE (Feature 1) ── */
+.progress-timeline { display:flex; align-items:center; margin:20px 0; position:relative; }
+.pt-step { display:flex; flex-direction:column; align-items:center; position:relative; flex:1; }
+.pt-circle { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; border:2px solid var(--border); background:var(--panel); transition:all 0.4s ease; z-index:2; position:relative; }
+.pt-circle.done { background:rgba(16,185,129,0.2); border-color:var(--green); box-shadow:0 0 14px rgba(16,185,129,0.3); }
+.pt-circle.active { background:rgba(99,102,241,0.2); border-color:var(--accent); box-shadow:0 0 14px rgba(99,102,241,0.4); animation:pulsePt 2s infinite; }
+.pt-circle.pending { background:var(--panel); border-color:var(--muted); opacity:0.5; }
+@keyframes pulsePt { 0%,100%{box-shadow:0 0 10px rgba(99,102,241,0.3);} 50%{box-shadow:0 0 22px rgba(99,102,241,0.6);} }
+.pt-label { font-size:0.72rem; color:var(--text2); margin-top:6px; text-align:center; font-weight:500; }
+.pt-label.active { color:var(--accent); font-weight:700; }
+.pt-label.done { color:var(--green); font-weight:600; }
+.pt-connector { flex:1; height:3px; background:var(--border); margin-top:-20px; position:relative; overflow:hidden; max-width:80px; }
+.pt-connector.filled { background:linear-gradient(90deg,var(--green),var(--accent)); }
+.pt-time { font-size:0.65rem; color:var(--muted); margin-top:3px; text-align:center; }
+
+/* ── SLA TIMER (Feature 2) ── */
+.sla-badge { display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:20px; font-size:0.75rem; font-weight:700; font-family:'JetBrains Mono'; }
+.sla-ok     { background:rgba(16,185,129,0.12); color:var(--green); border:1px solid rgba(16,185,129,0.3); }
+.sla-warn   { background:rgba(249,115,22,0.12); color:var(--orange); border:1px solid rgba(249,115,22,0.3); }
+.sla-over   { background:rgba(239,68,68,0.15); color:var(--red); border:1px solid rgba(239,68,68,0.4); animation:flashSla 1.5s infinite; }
+@keyframes flashSla { 0%,100%{opacity:1;} 50%{opacity:0.6;} }
+
+/* ── PHOTO UPLOAD (Feature 3) ── */
+.photo-upload-area { border:2px dashed var(--border); border-radius:10px; padding:20px; text-align:center; cursor:pointer; transition:var(--trans); position:relative; }
+.photo-upload-area:hover, .photo-upload-area.drag { border-color:var(--accent); background:rgba(99,102,241,0.05); }
+.photo-upload-area input[type=file] { position:absolute; inset:0; opacity:0; cursor:pointer; }
+.photo-preview { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.photo-thumb { width:72px; height:72px; border-radius:8px; object-fit:cover; border:2px solid var(--border); position:relative; display:inline-block; }
+.photo-thumb-wrap { position:relative; display:inline-block; }
+.photo-remove { position:absolute; top:-6px; right:-6px; width:18px; height:18px; background:var(--red); border-radius:50%; border:none; color:white; font-size:9px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+
+/* ── DUPLICATE DETECT (Feature 6) ── */
+.dup-alert { background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.35); border-radius:10px; padding:14px; margin-bottom:14px; display:none; }
+.dup-alert.show { display:block; animation:slideIn 0.3s ease; }
+.dup-alert-title { font-weight:700; color:var(--orange); margin-bottom:6px; font-size:0.9rem; }
+.dup-item { display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid rgba(249,115,22,0.15); font-size:0.82rem; }
+.dup-item:last-child { border-bottom:none; }
+
+/* ── SUGGESTIONS (Feature 10) ── */
+.suggestions-box { position:absolute; top:100%; left:0; right:0; background:var(--surface); border:1px solid var(--border); border-radius:0 0 10px 10px; z-index:50; box-shadow:var(--shadow); display:none; }
+.suggestions-box.open { display:block; }
+.suggestion-item { padding:10px 14px; cursor:pointer; font-size:0.85rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; transition:var(--trans); }
+.suggestion-item:hover { background:var(--panel); }
+.suggestion-item:last-child { border-bottom:none; }
+.suggestion-icon { font-size:1.1rem; }
+.textarea-wrap { position:relative; }
+
+/* ── TRACK ── */
+.track-input-row { display:flex; gap:8px; margin-bottom:20px; }
+.track-input-row input { flex:1; }
+.timeline { position:relative; padding-left:28px; }
+.timeline::before { content:''; position:absolute; left:8px; top:0; bottom:0; width:2px; background:rgba(99,102,241,0.20); }
+.tl-item { position:relative; margin-bottom:20px; }
+.tl-dot { position:absolute; left:-24px; width:14px; height:14px; border-radius:50%; border:2px solid var(--border); background:var(--panel); top:3px; }
+.tl-dot.active { background:#6366f1; border-color:#6366f1; box-shadow:0 0 10px rgba(255,107,71,0.6); }
+.tl-dot.done   { background:var(--green); border-color:var(--green); }
+.tl-title { font-size:0.85rem; font-weight:600; }
+.tl-time  { font-size:0.75rem; color:var(--text2); margin-top:2px; }
+
+/* ── DISASTER CARDS ── */
+.dis-card { border-left:3px solid var(--border); padding:14px; border-radius:8px; background:var(--panel); margin-bottom:10px; display:flex; justify-content:space-between; align-items:flex-start; }
+.dis-card.CRITICAL { border-left-color:var(--red); }
+.dis-card.HIGH     { border-left-color:var(--orange); }
+.dis-card.MEDIUM   { border-left-color:var(--yellow); }
+.dis-card.LOW      { border-left-color:var(--green); }
+
+/* ── RECENT LIST ── */
+.complaint-item { padding:12px; border-radius:8px; background:var(--panel); border:1px solid var(--border); margin-bottom:8px; cursor:pointer; transition:var(--trans); }
+.complaint-item:hover { border-color:var(--accent); }
+.ci-top { display:flex; justify-content:space-between; align-items:center; }
+.ci-id { font-family:'JetBrains Mono'; font-size:0.8rem; font-weight:700; color:#6366f1; }
+.ci-text { font-size:0.85rem; color:var(--text2); margin-top:4px; }
+.ci-meta { font-size:0.75rem; color:var(--muted); margin-top:6px; display:flex; gap:12px; flex-wrap:wrap; }
+
+/* ── MAP (Feature 7) ── */
+#complaint-map { height:420px; border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; }
+.map-legend { display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; font-size:0.8rem; }
+.legend-item { display:flex; align-items:center; gap:6px; }
+.legend-dot { width:12px; height:12px; border-radius:50%; }
+
+/* ── DEPT PERF (Feature 4) ── */
+.perf-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; }
+.perf-card { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px; }
+.perf-card-title { font-weight:700; font-size:0.9rem; margin-bottom:10px; display:flex; justify-content:space-between; }
+.perf-bar { height:6px; background:var(--border); border-radius:4px; overflow:hidden; margin:4px 0 10px; }
+.perf-fill { height:100%; border-radius:4px; transition:width 0.8s ease; }
+.perf-stat { display:flex; justify-content:space-between; font-size:0.78rem; color:var(--text2); margin:3px 0; }
+.perf-stat span:last-child { font-weight:600; color:var(--text); }
+.perf-badge { padding:2px 8px; border-radius:10px; font-size:0.7rem; font-weight:700; }
+.perf-best   { background:rgba(16,185,129,0.15); color:var(--green); }
+.perf-worst  { background:rgba(239,68,68,0.15); color:var(--red); }
+
+/* ── TOAST ── */
+#toast-wrap { position:fixed; bottom:24px; right:24px; z-index:999; display:flex; flex-direction:column; gap:8px; }
+.toast { padding:12px 18px; border-radius:10px; font-size:0.85rem; font-weight:500; display:flex; align-items:center; gap:8px; animation:slideIn 0.3s ease; box-shadow:var(--shadow); max-width:320px; }
+.toast-s { background:#065f46; color:#a7f3d0; }
+.toast-e { background:#7f1d1d; color:#fca5a5; }
+.toast-i { background:var(--card); color:var(--text); border:1px solid var(--border); }
+
+/* ── SPINNER ── */
+.spinner { width:16px; height:16px; border:2px solid rgba(255,255,255,0.3); border-top-color:white; border-radius:50%; animation:spin 0.7s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* ── FEEDBACK ── */
+.feedback-box { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; margin-top:14px; }
+.fb-btn { padding:10px 24px; border-radius:8px; border:2px solid var(--border); background:transparent; font-size:0.9rem; cursor:pointer; font-family:inherit; transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; font-weight:600; }
+.fb-btn.satisfied   { color:var(--green);  border-color:rgba(16,185,129,0.4); }
+.fb-btn.unsatisfied { color:var(--red);    border-color:rgba(239,68,68,0.4); }
+.fb-btn.satisfied:hover   { background:rgba(16,185,129,0.1); }
+.fb-btn.unsatisfied:hover { background:rgba(239,68,68,0.1); }
+.fb-btn.selected-sat   { background:rgba(16,185,129,0.15); border-color:var(--green); }
+.fb-btn.selected-unsat { background:rgba(239,68,68,0.15);  border-color:var(--red); }
+
+/* ── ESCALATE ── */
+.escalated-badge { background:rgba(239,68,68,0.2); color:#ff6b6b; border:1px solid rgba(239,68,68,0.5); padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; animation:flashSla 1.5s infinite; }
+
+/* ── MISC ── */
+.section-title { font-size:0.75rem; font-weight:600; color:rgba(255,107,71,0.7); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:12px; }
+.empty { text-align:center; padding:40px; color:var(--text2); }
+.empty i { font-size:2rem; margin-bottom:12px; opacity:0.4; }
+.filter-chips { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.chip { padding:5px 12px; border-radius:20px; font-size:0.8rem; border:1px solid var(--border); background:var(--panel); cursor:pointer; transition:var(--trans); font-family:inherit; color:var(--text2); }
+.chip.active, .chip:hover { background:var(--accent); color:white; border-color:var(--accent); }
+.coord-display { font-family:'JetBrains Mono'; font-size:0.78rem; color:#38bdf8; letter-spacing:0.3px; }
+
+/* ── BULK UPDATE (Feature 9) ── */
+.bulk-toolbar { display:flex; align-items:center; gap:10px; padding:10px 14px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.3); border-radius:8px; margin-bottom:12px; display:none; }
+.bulk-toolbar.show { display:flex; }
+.bulk-count { font-size:0.85rem; font-weight:600; color:var(--accent); }
+
+/* ── CHECKBOX ── */
+.complaint-checkbox { width:16px; height:16px; accent-color:var(--accent); cursor:pointer; flex-shrink:0; }
+.ci-row { display:flex; align-items:flex-start; gap:10px; }
+
+@media (max-width:600px) {
+  .kpi-row { grid-template-columns:1fr 1fr; }
+  .input-row, .info-grid { grid-template-columns:1fr; }
+  .tab-btn { padding:8px 10px; font-size:0.75rem; }
+  .progress-timeline { flex-wrap:nowrap; overflow-x:auto; }
+}
+</style>
+</head>
+<body>
+
+<div id="toast-wrap"></div>
+
+<!-- NOTIFICATION PANEL -->
+<div class="notif-panel" id="notif-panel">
+  <div class="notif-head">
+    <span>🔔 Notifications</span>
+    <button class="btn btn-sm btn-outline" onclick="clearNotifications()">Clear all</button>
+  </div>
+  <div class="notif-list" id="notif-list">
+    <div class="notif-empty">No notifications yet</div>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-logo">C</div>
+    <div class="brand-name">Civix</div>
+  </div>
+  <div class="topbar-right">
+    <button class="btn btn-sm btn-outline" onclick="printPDFReport()" title="Print / PDF Report" style="font-size:0.78rem">
+      <i class="fas fa-file-pdf" style="color:var(--red)"></i> PDF Report
+    </button>
+    <div class="icon-btn" onclick="toggleNotifPanel()" title="Notifications">
+      <i class="fas fa-bell" style="font-size:0.85rem"></i>
+      <span class="notif-badge" id="notif-badge">0</span>
+    </div>
+    <div class="icon-btn" onclick="toggleTheme()" title="Toggle theme" id="theme-btn">
+      <i class="fas fa-moon" style="font-size:0.85rem"></i>
+    </div>
+    <a href="../frontend-admin/index.html" class="icon-btn" title="Admin Panel">
+      <i class="fas fa-shield-alt" style="font-size:0.85rem"></i>
+    </a>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('report', this)"><i class="fas fa-plus-circle"></i> Report Issue</button>
+  <button class="tab-btn" onclick="switchTab('track', this)"><i class="fas fa-search"></i> Track Status</button>
+  <button class="tab-btn" onclick="switchTab('heatmap', this)"><i class="fas fa-map-marked-alt"></i> Heatmap</button>
+  <button class="tab-btn" onclick="switchTab('performance', this)"><i class="fas fa-chart-bar"></i> Dept. Performance</button>
+  <button class="tab-btn" onclick="switchTab('disasters', this)"><i class="fas fa-bolt"></i> Disasters</button>
+</div>
+
+<!-- ══ TAB: REPORT ══════════════════════════════════════════════════════════ -->
+<div class="tab-content active" id="tab-report">
+  <div class="kpi-row" id="kpi-row">
+    <div class="kpi"><div class="kpi-num" id="k-total" style="color:#6366f1">—</div><div class="kpi-label">Total Filed</div></div>
+    <div class="kpi"><div class="kpi-num" id="k-high" style="color:var(--red)">—</div><div class="kpi-label">High Priority</div></div>
+    <div class="kpi"><div class="kpi-num" id="k-res" style="color:var(--green)">—</div><div class="kpi-label">Resolved</div></div>
+    <div class="kpi"><div class="kpi-num" id="k-dis" style="color:var(--orange)">—</div><div class="kpi-label">Active Alerts</div></div>
+  </div>
+
+  <!-- Submit Form -->
+  <div class="card">
+    <div class="card-title"><i class="fas fa-edit" style="color:var(--accent)"></i> Submit a Complaint</div>
+
+    <!-- Duplicate Alert Banner (Feature 6) -->
+    <div class="dup-alert" id="dup-alert">
+      <div class="dup-alert-title">🔁 Similar complaints already reported nearby:</div>
+      <div id="dup-list"></div>
+      <div style="margin-top:10px;font-size:0.82rem;color:var(--text2)">
+        You can still submit a new complaint, or <button class="btn btn-outline btn-sm" onclick="switchTab('track',document.querySelectorAll('.tab-btn')[1]);document.getElementById('dup-alert').classList.remove('show')">👆 Upvote existing</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Describe your issue *</label>
+      <!-- Suggestions wrapper (Feature 10) -->
+      <div class="textarea-wrap">
+        <textarea id="complaint-text" placeholder="Describe the issue in detail. E.g. 'There is a fire in the building near the main road...'" oninput="updateCharCount();showSuggestions();checkDuplicates()"></textarea>
+        <div class="suggestions-box" id="suggestions-box"></div>
+      </div>
+      <div class="char-count"><span id="char-count">0</span>/1000</div>
+    </div>
+
+    <!-- Photo Upload (Feature 3) -->
+    <div class="form-group">
+      <label>📸 Attach Photo(s) <span style="color:var(--muted);text-transform:none;font-weight:400">(optional, max 3)</span></label>
+      <div class="photo-upload-area" id="photo-area" ondrop="handleDrop(event)" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')">
+        <input type="file" id="photo-input" accept="image/*" multiple onchange="handlePhotoSelect(event)">
+        <i class="fas fa-camera" style="font-size:1.5rem;color:var(--text2);margin-bottom:6px"></i>
+        <div style="font-size:0.85rem;color:var(--text2)">Click to upload or drag & drop</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:2px">JPG, PNG up to 5MB each</div>
+      </div>
+      <div class="photo-preview" id="photo-preview"></div>
+    </div>
+
+    <div class="form-group">
+      <label>📍 Location</label>
+      <div class="loc-box">
+        <div class="form-group"><input type="text" id="loc-area" placeholder="Area / Locality name (optional)"></div>
+        <button class="btn btn-outline btn-sm" onclick="getLocation()" id="gps-btn" style="height:42px;flex-shrink:0"><i class="fas fa-crosshairs"></i> Auto-detect</button>
+      </div>
+      <div class="coord-row">
+        <input type="number" id="lat-input" placeholder="Latitude (auto-filled)" step="0.000001">
+        <input type="number" id="lon-input" placeholder="Longitude (auto-filled)" step="0.000001">
+      </div>
+      <div class="loc-status" id="loc-status"></div>
+    </div>
+
+    <div class="input-row">
+      <div class="form-group">
+        <label>Email (for updates)</label>
+        <input type="email" id="contact-email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Phone (optional)</label>
+        <input type="tel" id="contact-phone" placeholder="+91 XXXXXXXXXX">
+      </div>
+    </div>
+
+    <button class="btn btn-primary" id="submit-btn" onclick="submitComplaint()" style="width:100%;justify-content:center">
+      <i class="fas fa-paper-plane"></i> Submit Complaint
+    </button>
+  </div>
+
+  <!-- Result -->
+  <div class="result-card" id="result-card" style="background:var(--card);border:1px solid var(--border)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div>
+        <div style="font-size:0.75rem;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px">Complaint Filed</div>
+        <div class="result-id" id="res-id" style="color:#6366f1"></div>
+      </div>
+      <div id="res-priority-badge"></div>
+    </div>
+    <div class="info-grid" id="res-grid"></div>
+    <div style="margin-top:12px;padding:12px;background:var(--panel);border-radius:8px;font-size:0.82rem;color:var(--text2)" id="res-reasoning"></div>
+  </div>
+
+  <!-- Recent Complaints with Bulk Update (Feature 9) -->
+  <div class="card" style="margin-top:8px">
+    <div class="card-title" style="justify-content:space-between">
+      <span><i class="fas fa-list" style="color:var(--cyan)"></i> Recent Complaints</span>
+      <label style="text-transform:none;font-size:0.78rem;color:var(--text2);display:flex;align-items:center;gap:6px;cursor:pointer;letter-spacing:0">
+        <input type="checkbox" id="select-all-cb" onchange="toggleSelectAll(this.checked)" style="width:auto;accent-color:var(--accent)"> Select All
+      </label>
+    </div>
+    <!-- Bulk toolbar -->
+    <div class="bulk-toolbar" id="bulk-toolbar">
+      <span class="bulk-count" id="bulk-count">0 selected</span>
+      <button class="btn btn-sm btn-primary" onclick="bulkResolve()"><i class="fas fa-check-double"></i> Mark All Resolved</button>
+      <button class="btn btn-sm btn-outline" onclick="clearSelection()">✕ Clear</button>
+    </div>
+    <div id="recent-list"><div class="empty"><i class="fas fa-inbox"></i><p>No complaints yet</p></div></div>
+  </div>
+</div>
+
+<!-- ══ TAB: TRACK ═══════════════════════════════════════════════════════════ -->
+<div class="tab-content" id="tab-track">
+  <div class="card">
+    <div class="card-title"><i class="fas fa-search" style="color:var(--accent)"></i> Track Your Complaint</div>
+    <div class="track-input-row">
+      <input type="text" id="track-id" placeholder="Enter complaint ID (e.g. ID-1)" onkeypress="if(event.key==='Enter')trackComplaint()">
+      <button class="btn btn-primary" onclick="trackComplaint()"><i class="fas fa-search"></i> Search</button>
+    </div>
+    <div id="track-result"></div>
+  </div>
+</div>
+
+<!-- ══ TAB: HEATMAP ══════════════════════════════════════════════════════════ -->
+<div class="tab-content" id="tab-heatmap">
+  <div class="card">
+    <div class="card-title"><i class="fas fa-map-marked-alt" style="color:var(--orange)"></i> Complaint Heatmap — Hyderabad Region</div>
+    <div id="complaint-map"></div>
+    <div class="map-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div><span>HIGH Priority</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div><span>MEDIUM Priority</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div><span>LOW Priority</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#6366f1;border:2px solid #6366f1"></div><span>Disaster Zone</span></div>
+    </div>
+    <div style="margin-top:10px;font-size:0.78rem;color:var(--muted)">Pins show geo-tagged complaints only. Click a pin for details.</div>
+  </div>
+</div>
+
+<!-- ══ TAB: DEPARTMENT PERFORMANCE ══════════════════════════════════════════ -->
+<div class="tab-content" id="tab-performance">
+  <div class="card">
+    <div class="card-title" style="justify-content:space-between">
+      <span><i class="fas fa-chart-bar" style="color:var(--accent)"></i> Department Performance Report</span>
+      <button class="btn btn-sm btn-outline" onclick="loadPerformance()"><i class="fas fa-sync"></i> Refresh</button>
+    </div>
+    <div id="perf-summary" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px"></div>
+    <div class="perf-grid" id="perf-grid"><div class="empty"><div class="spinner" style="margin:0 auto"></div></div></div>
+  </div>
+</div>
+
+<!-- ══ TAB: DISASTERS ════════════════════════════════════════════════════════ -->
+<div class="tab-content" id="tab-disasters">
+  <div class="card">
+    <div class="card-title"><i class="fas fa-bolt" style="color:var(--orange)"></i> Real-Time Disaster Monitoring</div>
+    <div class="filter-chips" id="dis-chips">
+      <button class="chip active" onclick="filterDis('all',this)">All</button>
+      <button class="chip" onclick="filterDis('Earthquake',this)">🌍 Earthquake</button>
+      <button class="chip" onclick="filterDis('Weather',this)">🌩️ Weather</button>
+      <button class="chip" onclick="filterDis('CRITICAL',this)">🚨 Critical</button>
+    </div>
+    <div id="dis-list"><div class="empty"><i class="fas fa-shield-alt"></i><p>Loading disaster data...</p></div></div>
+    <div style="margin-top:8px;font-size:0.75rem;color:var(--muted);text-align:right" id="dis-last-updated"></div>
+  </div>
+</div>
+
+<script>
+const API = 'http://localhost:3000';
+let allDisasters = [], localNotifications = [], notifCount = 0;
+let attachedPhotos = [];
+let selectedComplaints = new Set();
+let allComplaints = [];
+let leafletMap = null, mapInitialized = false;
+
+// ─── SUGGESTIONS DATA (Feature 10) ───────────────────────────────────────────
+const SUGGESTIONS = {
+  'water': ['💧 Water Leakage / Burst Pipe','🚰 No Water Supply','🌊 Flooding / Waterlogging','🧪 Contaminated / Dirty Water','🚽 Sewage Overflow'],
+  'fire':  ['🔥 Building / House Fire','🌿 Wildfire / Vegetation Fire','💥 Gas Leak / Cylinder Burst','⚡ Electrical Fire','🚒 Fire Hazard (Smoke)'],
+  'road':  ['🕳️ Pothole / Damaged Road','🚦 Traffic Signal Issue','🌉 Bridge / Flyover Damage','🚧 Unauthorized Construction','🛣️ Blocked Road'],
+  'elect': ['💡 Street Light Not Working','⚡ Power Outage / Blackout','🔌 Fallen Electric Wire','🔋 Voltage Fluctuation','⚠️ Transformer Issue'],
+  'garb':  ['🗑️ Garbage Not Collected','🐀 Rats / Pest Infestation','🦟 Mosquito Breeding','💀 Open Defecation','♻️ Illegal Waste Dumping'],
+  'accid': ['🚑 Road Accident / Injury','🏥 Medical Emergency','👤 Unconscious Person','🩸 Bleeding / Trauma','💊 Poisoning'],
+  'theft': ['🔓 Theft / Burglary','🔪 Assault / Violence','😰 Harassment','📱 Chain Snatching','🚗 Vehicle Theft'],
+  'dog':   ['🐕 Stray Dog Menace','🐍 Snake / Wildlife Sighting','🐒 Monkey Attack','🐮 Stray Cattle','🦜 Bird / Animal Nuisance'],
+};
+
+function showSuggestions() {
+  const text = document.getElementById('complaint-text').value.toLowerCase();
+  const box = document.getElementById('suggestions-box');
+  if (text.length < 3) { box.classList.remove('open'); return; }
+
+  let matches = [];
+  for (const [key, items] of Object.entries(SUGGESTIONS)) {
+    if (text.includes(key) || key.startsWith(text.slice(0,4))) {
+      matches = [...matches, ...items.slice(0,3)];
+    }
+  }
+  // Also match by keywords in text
+  const keywords = ['water','fire','road','pothole','electric','light','garbage','accident','theft','dog','stray','flood','pipe','leak','power','sewage'];
+  for (const kw of keywords) {
+    if (text.includes(kw) && !matches.length) {
+      for (const [key, items] of Object.entries(SUGGESTIONS)) {
+        if (key === kw.slice(0,5) || kw.includes(key)) {
+          matches = [...items.slice(0,3)];
+          break;
+        }
+      }
+    }
+  }
+  matches = [...new Set(matches)].slice(0,5);
+  if (!matches.length) { box.classList.remove('open'); return; }
+
+  box.innerHTML = '<div style="padding:8px 14px;font-size:0.72rem;color:var(--muted);font-weight:600;letter-spacing:0.5px">SUGGESTIONS — Did you mean:</div>' +
+    matches.map(m => `<div class="suggestion-item" onclick="applySuggestion('${m.replace(/'/g,"\\'")}')"><span class="suggestion-icon">${m.split(' ')[0]}</span><span>${m.slice(m.indexOf(' ')+1)}</span></div>`).join('');
+  box.classList.add('open');
+}
+
+function applySuggestion(text) {
+  // Strip emoji from text
+  const clean = text.replace(/[\u{1F000}-\u{1FFFF}]/gu,'').trim();
+  document.getElementById('complaint-text').value = clean;
+  document.getElementById('char-count').textContent = clean.length;
+  document.getElementById('suggestions-box').classList.remove('open');
+  checkDuplicates();
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.textarea-wrap')) document.getElementById('suggestions-box').classList.remove('open');
+});
+
+// ─── PHOTO UPLOAD (Feature 3) ─────────────────────────────────────────────────
+function handlePhotoSelect(e) {
+  const files = Array.from(e.target.files);
+  processPhotos(files);
+}
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('photo-area').classList.remove('drag');
+  processPhotos(Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/')));
+}
+function processPhotos(files) {
+  files.slice(0, 3 - attachedPhotos.length).forEach(file => {
+    if (file.size > 5 * 1024 * 1024) { toast('Photo too large (max 5MB)', 'e'); return; }
+    const reader = new FileReader();
+    reader.onload = ev => {
+      attachedPhotos.push({ name: file.name, data: ev.target.result, type: file.type });
+      renderPhotoPreview();
+    };
+    reader.readAsDataURL(file);
+  });
+}
+function renderPhotoPreview() {
+  const prev = document.getElementById('photo-preview');
+  prev.innerHTML = attachedPhotos.map((p, i) => `
+    <div class="photo-thumb-wrap">
+      <img src="${p.data}" class="photo-thumb" alt="${p.name}">
+      <button class="photo-remove" onclick="removePhoto(${i})">✕</button>
+    </div>`).join('');
+}
+function removePhoto(i) {
+  attachedPhotos.splice(i, 1);
+  renderPhotoPreview();
+}
+
+// ─── DUPLICATE DETECTION (Feature 6) ─────────────────────────────────────────
+let dupDebounce;
+function checkDuplicates() {
+  clearTimeout(dupDebounce);
+  dupDebounce = setTimeout(async () => {
+    const text = document.getElementById('complaint-text').value.trim().toLowerCase();
+    if (text.length < 12 || !allComplaints.length) return;
+    const keywords = text.split(/\s+/).filter(w => w.length > 4);
+    if (!keywords.length) return;
+    const lat = parseFloat(document.getElementById('lat-input').value);
+    const lon = parseFloat(document.getElementById('lon-input').value);
+
+    const matches = allComplaints.filter(c => {
+      if (c.status === 'Resolved') return false;
+      const cText = c.text.toLowerCase();
+      const textMatch = keywords.some(kw => cText.includes(kw));
+      if (!textMatch) return false;
+      // Geo proximity if coords exist
+      if (lat && lon && c.location?.lat && c.location?.lon) {
+        const dist = Math.sqrt(Math.pow(c.location.lat - lat, 2) + Math.pow(c.location.lon - lon, 2));
+        return dist < 0.02; // ~2km
+      }
+      return textMatch;
+    }).slice(0, 3);
+
+    const alert = document.getElementById('dup-alert');
+    if (matches.length > 0) {
+      document.getElementById('dup-list').innerHTML = matches.map(c => `
+        <div class="dup-item">
+          <span>${c.id} — ${c.text.substring(0,60)}${c.text.length>60?'...':''}</span>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span class="badge b-${c.priority}">${c.priority}</span>
+            <button class="btn btn-sm btn-outline" style="padding:3px 8px;font-size:0.7rem" onclick="upvote('${c.id}');toast('👍 Upvoted ${c.id}','s')">Upvote</button>
+          </div>
+        </div>`).join('');
+      alert.classList.add('show');
+    } else {
+      alert.classList.remove('show');
+    }
+  }, 500);
+}
+
+// ─── SLA TIMER (Feature 2) ─────────────────────────────────────────────────
+function calcSLA(complaint) {
+  const slaHours = { HIGH: 1, MEDIUM: 24, LOW: 72 };
+  const sla = slaHours[complaint.priority] || 72;
+  const filed = new Date(complaint.timestamp).getTime();
+  const elapsed = (Date.now() - filed) / 3600000; // hours
+  const remaining = sla - elapsed;
+  const isResolved = complaint.status === 'Resolved';
+
+  if (isResolved) return { html: `<span class="sla-badge sla-ok">✅ Resolved</span>`, overdue: false };
+  if (remaining < 0) {
+    const overdueH = Math.abs(remaining);
+    const h = Math.floor(overdueH), m = Math.floor((overdueH%1)*60);
+    return { html: `<span class="sla-badge sla-over">🚨 OVERDUE ${h}h ${m}m</span>`, overdue: true };
+  }
+  const h = Math.floor(remaining), m = Math.floor((remaining%1)*60);
+  const cls = remaining < sla * 0.25 ? 'sla-warn' : 'sla-ok';
+  return { html: `<span class="sla-badge ${cls}">⏰ ${h}h ${m}m left</span>`, overdue: false };
+}
+
+// ─── PROGRESS TIMELINE (Feature 1) ─────────────────────────────────────────
+function buildProgressTimeline(complaint) {
+  const steps = [
+    { key: 'Submitted',    icon: '📋', label: 'Submitted' },
+    { key: 'Under Review', icon: '🔍', label: 'Under Review' },
+    { key: 'In Progress',  icon: '🔧', label: 'In Progress' },
+    { key: 'Resolved',     icon: '✅', label: 'Resolved' },
+  ];
+  const statusOrder = { 'Pending': 0, 'Under Review': 1, 'In Progress': 2, 'Resolved': 3 };
+  const curIdx = complaint.status === 'Pending' ? 0 : (statusOrder[complaint.status] || 0);
+  // Submitted is always done if complaint exists
+  const effectiveIdx = Math.max(curIdx, 0);
+
+  let html = '<div class="progress-timeline">';
+  steps.forEach((s, i) => {
+    let cls = 'pending';
+    if (i === 0 || i < effectiveIdx + (complaint.status !== 'Pending' ? 1 : 1)) cls = 'done';
+    if (i === effectiveIdx && complaint.status !== 'Resolved') cls = 'active';
+    if (i === 0) cls = 'done'; // always submitted
+
+    const ts = i === 0 ? complaint.timestamp : (complaint.updates.find(u => u.status === s.key)?.timestamp || null);
+
+    html += `<div class="pt-step">
+      <div class="pt-circle ${cls}">${cls==='done' ? '✅' : cls==='active' ? s.icon : '⬜'}</div>
+      <div class="pt-label ${cls}">${s.label}</div>
+      ${ts ? `<div class="pt-time">${timeAgo(ts)}</div>` : ''}
+    </div>`;
+    if (i < steps.length - 1) {
+      html += `<div class="pt-connector ${i < effectiveIdx + 1 ? 'filled' : ''}"></div>`;
+    }
+  });
+  html += '</div>';
+  return html;
+}
+
+// ─── THEME ───────────────────────────────────────────────────────────────────
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('theme-btn').innerHTML = `<i class="fas fa-${isDark ? 'sun' : 'moon'}" style="font-size:0.85rem"></i>`;
+  localStorage.setItem('civix-theme', isDark ? 'light' : 'dark');
+  if (mapInitialized) { /* re-render map tiles on theme change */ }
+}
+(function initTheme() {
+  const saved = localStorage.getItem('civix-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  document.getElementById('theme-btn').innerHTML = `<i class="fas fa-${saved === 'dark' ? 'moon' : 'sun'}" style="font-size:0.85rem"></i>`;
+})();
+
+// ─── TABS ─────────────────────────────────────────────────────────────────────
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'disasters') loadDisasters();
+  if (name === 'heatmap') initMap();
+  if (name === 'performance') loadPerformance();
+}
+
+// ─── SSE ──────────────────────────────────────────────────────────────────────
+function connectSSE() {
+  const es = new EventSource(`${API}/api/events`);
+  es.onmessage = e => {
+    const d = JSON.parse(e.data);
+    if (d.type === 'connected') return;
+    if (d.type === 'new_complaint') { addNotif('info', `New complaint: ${d.id} (${d.category})`); loadStats(); loadRecent(); }
+    if (d.type === 'status_update') { addNotif('info', `${d.complaintId} → "${d.newStatus}"`); toast(`Complaint ${d.complaintId} is now "${d.newStatus}"`, 's'); loadStats(); loadRecent(); }
+    if (d.type === 'disaster') { addNotif('high', `🚨 ${d.disaster.type} — ${d.disaster.location}`); if (document.getElementById('tab-disasters').classList.contains('active')) loadDisasters(); loadStats(); }
+    if (d.type === 'alert') { const a = d.alert; addNotif(a.priority === 'HIGH' ? 'high' : a.priority === 'MEDIUM' ? 'med' : 'low', a.message); }
+  };
+  es.onerror = () => setTimeout(connectSSE, 5000);
+}
+connectSSE();
+
+// ─── NOTIFICATIONS ────────────────────────────────────────────────────────────
+function addNotif(level, msg) {
+  localNotifications.unshift({ level, msg, time: new Date().toLocaleTimeString('en-IN') });
+  if (localNotifications.length > 50) localNotifications = localNotifications.slice(0, 50);
+  notifCount++;
+  const badge = document.getElementById('notif-badge');
+  badge.textContent = notifCount > 99 ? '99+' : notifCount;
+  badge.style.display = 'flex';
+  renderNotifList();
+}
+function renderNotifList() {
+  const list = document.getElementById('notif-list');
+  if (!localNotifications.length) { list.innerHTML = '<div class="notif-empty">No notifications yet</div>'; return; }
+  list.innerHTML = localNotifications.map(n => `
+    <div class="notif-item">
+      <div class="notif-dot2 dot-${n.level==='high'?'high':n.level==='med'?'med':'info'}"></div>
+      <div><div>${n.msg}</div><div style="color:var(--muted);font-size:0.72rem;margin-top:2px">${n.time}</div></div>
+    </div>`).join('');
+}
+function toggleNotifPanel() {
+  const p = document.getElementById('notif-panel');
+  p.classList.toggle('open');
+  if (p.classList.contains('open')) { notifCount = 0; document.getElementById('notif-badge').style.display = 'none'; }
+}
+function clearNotifications() {
+  localNotifications = []; notifCount = 0;
+  document.getElementById('notif-badge').style.display = 'none';
+  renderNotifList();
+  document.getElementById('notif-panel').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('#notif-panel') && !e.target.closest('.icon-btn')) document.getElementById('notif-panel').classList.remove('open');
+});
+
+// ─── GEOLOCATION ─────────────────────────────────────────────────────────────
+function getLocation() {
+  const btn = document.getElementById('gps-btn'), status = document.getElementById('loc-status');
+  btn.innerHTML = '<div class="spinner"></div>'; btn.disabled = true;
+  status.className = 'loc-status';
+  if (!navigator.geolocation) { status.textContent = '❌ Geolocation not supported.'; status.className = 'loc-status error'; btn.innerHTML = '<i class="fas fa-crosshairs"></i> Auto-detect'; btn.disabled = false; return; }
+  navigator.geolocation.getCurrentPosition(async pos => {
+    const lat = pos.coords.latitude, lon = pos.coords.longitude;
+    document.getElementById('lat-input').value = lat.toFixed(6);
+    document.getElementById('lon-input').value = lon.toFixed(6);
+    try {
+      const r = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`, { headers: { 'User-Agent': 'CivixPlatform/2.0' } });
+      const d = await r.json();
+      const area = d.address?.suburb || d.address?.neighbourhood || d.address?.city_district || d.address?.city || `${lat.toFixed(3)}, ${lon.toFixed(3)}`;
+      document.getElementById('loc-area').value = area;
+      status.textContent = `✅ ${area} · ${lat.toFixed(5)}, ${lon.toFixed(5)}`;
+    } catch { document.getElementById('loc-area').value = `${lat.toFixed(4)}, ${lon.toFixed(4)}`; status.textContent = `✅ ${lat.toFixed(5)}, ${lon.toFixed(5)}`; }
+    status.className = 'loc-status success';
+    btn.innerHTML = '<i class="fas fa-check"></i> Detected'; btn.disabled = false;
+    checkDuplicates();
+  }, err => {
+    const msgs = { 1:'Permission denied.', 2:'Unavailable.', 3:'Timed out.' };
+    status.textContent = `❌ ${msgs[err.code]||'Failed.'}`;
+    status.className = 'loc-status error';
+    btn.innerHTML = '<i class="fas fa-crosshairs"></i> Auto-detect'; btn.disabled = false;
+  }, { enableHighAccuracy:true, timeout:10000, maximumAge:0 });
+}
+
+// ─── SUBMIT COMPLAINT ──────────────────────────────────────────────────────────
+function updateCharCount() { document.getElementById('char-count').textContent = document.getElementById('complaint-text').value.length; }
+
+async function submitComplaint() {
+  const text  = document.getElementById('complaint-text').value.trim();
+  const area  = document.getElementById('loc-area').value.trim();
+  const lat   = parseFloat(document.getElementById('lat-input').value) || null;
+  const lon   = parseFloat(document.getElementById('lon-input').value) || null;
+  const email = document.getElementById('contact-email').value.trim();
+  const phone = document.getElementById('contact-phone').value.trim();
+  if (text.length < 10) { toast('Please describe the issue (min 10 chars)', 'e'); return; }
+
+  const btn = document.getElementById('submit-btn');
+  btn.innerHTML = '<div class="spinner"></div> Processing...'; btn.disabled = true;
+  try {
+    const res = await fetch(`${API}/api/complaint`, {
+      method: 'POST', headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        text,
+        location: { area: area||null, address: area||null, lat, lon },
+        contactEmail: email||null, contactPhone: phone||null,
+        photos: attachedPhotos.map(p => ({ name:p.name, data:p.data, type:p.type })),
+      })
+    });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.error||'Failed'); }
+    const data = await res.json();
+    const c = data.complaint;
+
+    const rc = document.getElementById('result-card');
+    document.getElementById('res-id').textContent = c.id;
+    document.getElementById('res-priority-badge').innerHTML = `<span class="badge b-${c.priority}">${c.priority}</span>`;
+    const ll = (c.location?.lat && c.location?.lon) ? `${parseFloat(c.location.lat).toFixed(5)}, ${parseFloat(c.location.lon).toFixed(5)}` : 'Not captured';
+    document.getElementById('res-grid').innerHTML = `
+      <div class="info-item"><div class="il">Category</div><div class="iv">${c.category}</div></div>
+      <div class="info-item"><div class="il">Department</div><div class="iv">${c.department}</div></div>
+      <div class="info-item"><div class="il">Status</div><div class="iv"><span class="badge b-Pending">Pending</span></div></div>
+      <div class="info-item"><div class="il">Location</div><div class="iv">${c.location?.area||'Not specified'}</div></div>
+      <div class="info-item"><div class="il">Coordinates</div><div class="iv coord-display">${ll}</div></div>
+      <div class="info-item"><div class="il">Confidence</div><div class="iv">${Math.round(c.confidence*100)}%</div></div>
+    `;
+    document.getElementById('res-reasoning').innerHTML = `<strong>AI Analysis:</strong> ${c.reasoning}`;
+    rc.className = 'result-card show';
+
+    // Reset
+    document.getElementById('complaint-text').value = '';
+    document.getElementById('loc-area').value = '';
+    document.getElementById('lat-input').value = '';
+    document.getElementById('lon-input').value = '';
+    document.getElementById('char-count').textContent = '0';
+    document.getElementById('loc-status').className = 'loc-status';
+    document.getElementById('dup-alert').classList.remove('show');
+    document.getElementById('suggestions-box').classList.remove('open');
+    attachedPhotos = []; renderPhotoPreview();
+
+    toast(`Complaint filed: ${c.id}`, 's');
+    loadStats(); loadRecent();
+  } catch (err) {
+    toast(err.message||'Submission failed. Is backend running?', 'e');
+  } finally {
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Complaint'; btn.disabled = false;
+  }
+}
+
+// ─── TRACK COMPLAINT (with Progress Timeline + SLA) ──────────────────────────
+async function trackComplaint() {
+  const id = document.getElementById('track-id').value.trim();
+  if (!id) { toast('Enter a complaint ID', 'e'); return; }
+  const box = document.getElementById('track-result');
+  box.innerHTML = '<div class="empty"><div class="spinner" style="margin:0 auto"></div></div>';
+  try {
+    const res = await fetch(`${API}/api/complaints/id/${encodeURIComponent(id)}`);
+    if (!res.ok) { box.innerHTML = `<div class="empty"><i class="fas fa-search"></i><p>Complaint "${id}" not found</p></div>`; return; }
+    const c = await res.json();
+    const ll = (c.location?.lat && c.location?.lon) ? `${parseFloat(c.location.lat).toFixed(5)}, ${parseFloat(c.location.lon).toFixed(5)}` : 'N/A';
+    const prioColor = c.priority==='HIGH'?'var(--red)':c.priority==='MEDIUM'?'var(--orange)':'var(--green)';
+    const sla = calcSLA(c);
+    const progressHtml = buildProgressTimeline(c);
+    const escalatedBadge = c.status === 'Escalated' ? '<span class="escalated-badge">🚨 ESCALATED</span>' : '';
+
+    // Photo thumbnails
+    const photoHtml = c.photos?.length ? `
+      <div style="margin-top:12px">
+        <div style="font-size:0.75rem;color:var(--text2);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.3px">📸 Attached Photos</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">${c.photos.map(p=>`<img src="${p.data}" style="width:80px;height:80px;border-radius:8px;object-fit:cover;border:2px solid var(--border)" onclick="window.open('${p.data}')">`).join('')}</div>
+      </div>` : '';
+
+    box.innerHTML = `
+      <div style="border-left:3px solid ${prioColor};padding:16px 20px;background:var(--panel);border-radius:8px;margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px">
+          <span class="result-id" style="font-size:1.2rem">${c.id}</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+            <span class="badge b-${c.priority}">${c.priority}</span>
+            <span class="badge b-${c.status.replace(' ','')}">${c.status}</span>
+            ${escalatedBadge}
+            ${sla.html}
+          </div>
+        </div>
+        ${progressHtml}
+        <div class="info-grid" style="margin-bottom:12px">
+          <div class="info-item"><div class="il">Category</div><div class="iv">${c.category}</div></div>
+          <div class="info-item"><div class="il">Department</div><div class="iv">${c.department}</div></div>
+          <div class="info-item"><div class="il">Location</div><div class="iv">${c.location?.area||'Not specified'}</div></div>
+          <div class="info-item"><div class="il">Coordinates</div><div class="iv coord-display">${ll}</div></div>
+          <div class="info-item"><div class="il">Filed</div><div class="iv">${timeAgo(c.timestamp)}</div></div>
+          <div class="info-item"><div class="il">Upvotes</div><div class="iv">👍 ${c.upvotes}</div></div>
+        </div>
+        <div style="font-size:0.85rem;color:var(--text2);margin-bottom:12px">${c.text}</div>
+        ${photoHtml}
+        <button class="btn btn-outline btn-sm" onclick="upvote('${c.id}')">👍 Upvote</button>
+      </div>
+      <div class="card-title" style="margin-bottom:12px"><i class="fas fa-stream" style="color:var(--accent)"></i> Update History</div>
+      ${c.updates.length ? c.updates.map(u=>`<div style="padding:8px 12px;background:var(--panel);border-radius:8px;margin-bottom:6px;font-size:0.82rem"><strong>${u.status}</strong> by ${u.updatedBy} — ${u.note||''} <span style="color:var(--muted);float:right">${timeAgo(u.timestamp)}</span></div>`).join('') : '<div style="font-size:0.82rem;color:var(--muted);padding:8px">No updates yet.</div>'}
+      ${c.status==='Resolved' ? (c.feedback ?
+        `<div class="feedback-box" style="text-align:center;margin-top:14px"><div style="font-size:1.4rem;margin-bottom:6px">${c.feedback.rating==='satisfied'?'😊':'😞'}</div><div style="font-weight:600;font-size:0.9rem">Feedback submitted — ${c.feedback.rating==='satisfied'?'Satisfied ✅':'Not Satisfied ❌'}</div>${c.feedback.comment?`<div style="color:var(--text2);font-size:0.82rem;margin-top:6px;font-style:italic">"${c.feedback.comment}"</div>`:''}</div>` :
+        `<div class="feedback-box" style="margin-top:14px"><div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">🎉 Your complaint is resolved!</div><div style="font-size:0.82rem;color:var(--text2);margin-bottom:14px">Was your issue actually fixed?</div><div style="display:flex;gap:10px;margin-bottom:12px"><button class="fb-btn satisfied" id="fb-sat" onclick="selectFeedback('satisfied')">😊 Satisfied</button><button class="fb-btn unsatisfied" id="fb-unsat" onclick="selectFeedback('unsatisfied')">😞 Not Satisfied</button></div><textarea id="fb-comment" placeholder="Any comments? (optional)" style="width:100%;background:var(--panel);border:1px solid var(--border);color:var(--text);padding:10px;border-radius:8px;font-size:0.85rem;font-family:inherit;outline:none;resize:vertical;min-height:70px;margin-bottom:10px;box-sizing:border-box"></textarea><button class="btn btn-primary btn-sm" onclick="submitFeedback('${c.id}')"><i class="fas fa-paper-plane"></i> Submit Feedback</button></div>`)
+      : ''}
+    `;
+  } catch (err) { box.innerHTML = `<div class="empty"><i class="fas fa-exclamation-circle"></i><p>Error: ${err.message}</p></div>`; }
+}
+
+async function upvote(id) {
+  try {
+    const r = await fetch(`${API}/api/complaint/${id}/upvote`, { method:'POST' });
+    const d = await r.json();
+    toast(`👍 Upvoted! Total: ${d.upvotes}`, 's');
+  } catch { toast('Failed to upvote', 'e'); }
+}
+
+// ─── BULK UPDATE (Feature 9) ──────────────────────────────────────────────────
+function toggleSelectAll(checked) {
+  document.querySelectorAll('.complaint-checkbox').forEach(cb => {
+    cb.checked = checked;
+    const id = cb.dataset.id;
+    if (checked) selectedComplaints.add(id);
+    else selectedComplaints.delete(id);
+  });
+  updateBulkToolbar();
+}
+
+function onComplaintCheck(id, checked) {
+  if (checked) selectedComplaints.add(id);
+  else selectedComplaints.delete(id);
+  updateBulkToolbar();
+}
+
+function updateBulkToolbar() {
+  const toolbar = document.getElementById('bulk-toolbar');
+  const count = document.getElementById('bulk-count');
+  if (selectedComplaints.size > 0) {
+    toolbar.classList.add('show');
+    count.textContent = `${selectedComplaints.size} selected`;
+  } else {
+    toolbar.classList.remove('show');
+  }
+}
+
+function clearSelection() {
+  selectedComplaints.clear();
+  document.querySelectorAll('.complaint-checkbox').forEach(cb => cb.checked = false);
+  document.getElementById('select-all-cb').checked = false;
+  updateBulkToolbar();
+}
+
+async function bulkResolve() {
+  if (!selectedComplaints.size) return;
+  const ids = [...selectedComplaints];
+  const btn = document.querySelector('#bulk-toolbar .btn-primary');
+  btn.innerHTML = '<div class="spinner"></div> Resolving...'; btn.disabled = true;
+  try {
+    const r = await fetch(`${API}/api/complaints/bulk`, {
+      method: 'PUT', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ ids, status: 'Resolved', note: 'Bulk resolved', assignedTo: 'Admin' })
+    });
+    const d = await r.json();
+    toast(`✅ ${d.updated}/${ids.length} complaints resolved`, 's');
+  } catch {
+    toast('Bulk update failed', 'e');
+  }
+  clearSelection();
+  loadRecent(); loadStats();
+  btn.innerHTML = '<i class="fas fa-check-double"></i> Mark All Resolved'; btn.disabled = false;
+}
+
+// ─── HEATMAP (Feature 7) ──────────────────────────────────────────────────────
+function initMap() {
+  if (mapInitialized) { refreshMapPins(); return; }
+  // Default center: Hyderabad
+  const map = L.map('complaint-map').setView([17.385, 78.4867], 11);
+  leafletMap = map;
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  mapInitialized = true;
+  refreshMapPins();
+}
+
+function refreshMapPins() {
+  if (!leafletMap) return;
+  // Clear existing markers
+  leafletMap.eachLayer(layer => { if (layer instanceof L.CircleMarker || layer instanceof L.Marker) leafletMap.removeLayer(layer); });
+
+  const colored = allComplaints.filter(c => c.location?.lat && c.location?.lon);
+  colored.forEach(c => {
+    const color = c.priority === 'HIGH' ? '#ef4444' : c.priority === 'MEDIUM' ? '#f97316' : '#10b981';
+    const circle = L.circleMarker([c.location.lat, c.location.lon], {
+      radius: c.priority === 'HIGH' ? 10 : c.priority === 'MEDIUM' ? 8 : 6,
+      fillColor: color, color: '#fff', weight: 2, opacity: 1, fillOpacity: 0.85
+    }).addTo(leafletMap);
+    circle.bindPopup(`<strong>${c.id}</strong><br>${c.text.substring(0,80)}...<br><span style="color:${color}">${c.priority}</span> · ${c.status}`);
+  });
+
+  // Add disaster zones
+  allDisasters.forEach(d => {
+    if (!d.coordinates) return;
+    L.circleMarker([d.coordinates.lat, d.coordinates.lon], {
+      radius: 14, fillColor: '#6366f1', color: '#fff', weight: 2, opacity: 0.8, fillOpacity: 0.3
+    }).addTo(leafletMap).bindPopup(`<strong>🚨 ${d.type}</strong><br>${d.location}<br>${d.description.substring(0,80)}`);
+  });
+}
+
+// ─── DEPARTMENT PERFORMANCE (Feature 4) ─────────────────────────────────────
+async function loadPerformance() {
+  document.getElementById('perf-grid').innerHTML = '<div class="empty"><div class="spinner" style="margin:0 auto"></div></div>';
+  try {
+    const [deptRes, statsRes] = await Promise.all([fetch(`${API}/api/departments`), fetch(`${API}/api/analytics`)]);
+    const depts = await deptRes.json();
+    const analytics = await statsRes.json();
+
+    // Calc performance per dept
+    const perfData = [];
+    for (const [key, dept] of Object.entries(depts)) {
+      if (!dept.total) continue;
+      const complaints = allComplaints.filter(c => c.category === key);
+      const resolved = complaints.filter(c => c.status === 'Resolved');
+      const slaHours = { HIGH:1, MEDIUM:24, LOW:72 };
+      let slaCompliant = 0;
+      let totalResTime = 0;
+      let resCount = 0;
+      resolved.forEach(c => {
+        const resolvedUpdate = c.updates?.find(u => u.status === 'Resolved');
+        if (resolvedUpdate) {
+          const resTime = (new Date(resolvedUpdate.timestamp) - new Date(c.timestamp)) / 3600000;
+          totalResTime += resTime;
+          resCount++;
+          const slah = slaHours[c.priority] || 72;
+          if (resTime <= slah) slaCompliant++;
+        }
+      });
+      const avgResTime = resCount ? (totalResTime / resCount).toFixed(1) : null;
+      const slaPercent = resolved.length ? Math.round((slaCompliant / resolved.length) * 100) : null;
+      const resolutionRate = dept.total ? Math.round((dept.resolved / dept.total) * 100) : 0;
+
+      perfData.push({ key, name: dept.name, total: dept.total, pending: dept.pending||0, inProgress: dept.inProgress||0, resolved: dept.resolved||0, avgResTime, slaPercent, resolutionRate });
+    }
+
+    if (!perfData.length) {
+      document.getElementById('perf-grid').innerHTML = '<div class="empty"><i class="fas fa-chart-bar"></i><p>No complaint data yet</p></div>';
+      return;
+    }
+
+    // Find best/worst
+    const withSLA = perfData.filter(d => d.slaPercent !== null);
+    const best = withSLA.length ? withSLA.reduce((a,b) => a.slaPercent > b.slaPercent ? a : b) : null;
+    const worst = withSLA.length ? withSLA.reduce((a,b) => a.slaPercent < b.slaPercent ? a : b) : null;
+
+    // Summary
+    const totalComplaints = perfData.reduce((s,d)=>s+d.total,0);
+    const totalResolved = perfData.reduce((s,d)=>s+d.resolved,0);
+    document.getElementById('perf-summary').innerHTML = `
+      <div class="info-item"><div class="il">Total Complaints</div><div class="iv" style="font-size:1.3rem;font-family:'JetBrains Mono'">${totalComplaints}</div></div>
+      <div class="info-item"><div class="il">Overall Resolution Rate</div><div class="iv" style="font-size:1.3rem;font-family:'JetBrains Mono';color:var(--green)">${totalComplaints?Math.round(totalResolved/totalComplaints*100):0}%</div></div>
+      ${best ? `<div class="info-item"><div class="il">🏆 Best Dept</div><div class="iv" style="color:var(--green)">${best.name}</div></div>` : ''}
+      ${worst && worst !== best ? `<div class="info-item"><div class="il">⚠️ Needs Attention</div><div class="iv" style="color:var(--red)">${worst.name}</div></div>` : ''}
+    `;
+
+    document.getElementById('perf-grid').innerHTML = perfData.map(d => {
+      const isBest = best && d.key === best.key;
+      const isWorst = worst && d.key === worst.key && worst !== best;
+      const barColor = d.resolutionRate >= 80 ? '#10b981' : d.resolutionRate >= 50 ? '#f97316' : '#ef4444';
+      return `<div class="perf-card">
+        <div class="perf-card-title">
+          <span>${d.name}</span>
+          ${isBest ? '<span class="perf-badge perf-best">🏆 Best</span>' : ''}
+          ${isWorst ? '<span class="perf-badge perf-worst">⚠️ Lagging</span>' : ''}
+        </div>
+        <div class="perf-bar"><div class="perf-fill" style="width:${d.resolutionRate}%;background:${barColor}"></div></div>
+        <div class="perf-stat"><span>Total Complaints</span><span>${d.total}</span></div>
+        <div class="perf-stat"><span>Resolved</span><span style="color:var(--green)">${d.resolved}</span></div>
+        <div class="perf-stat"><span>Pending</span><span style="color:var(--yellow)">${d.pending}</span></div>
+        <div class="perf-stat"><span>Resolution Rate</span><span style="color:${barColor}">${d.resolutionRate}%</span></div>
+        <div class="perf-stat"><span>Avg Resolution Time</span><span>${d.avgResTime ? d.avgResTime+'h' : 'N/A'}</span></div>
+        <div class="perf-stat"><span>SLA Compliance</span><span style="color:${d.slaPercent>=80?'var(--green)':d.slaPercent>=50?'var(--orange)':'var(--red)'}">${d.slaPercent !== null ? d.slaPercent+'%' : 'N/A'}</span></div>
+      </div>`;
+    }).join('');
+  } catch (err) {
+    document.getElementById('perf-grid').innerHTML = `<div class="empty"><i class="fas fa-exclamation"></i><p>${err.message}</p></div>`;
+  }
+}
+
+// ─── AUTO-ESCALATION CHECK (Feature 8) ────────────────────────────────────────
+function checkAutoEscalation() {
+  const highPending = allComplaints.filter(c => c.priority === 'HIGH' && c.status === 'Pending');
+  highPending.forEach(async c => {
+    const elapsed = (Date.now() - new Date(c.timestamp).getTime()) / 3600000;
+    if (elapsed >= 1) {
+      // Send escalation request to server
+      try {
+        await fetch(`${API}/api/complaint/${c.id}`, {
+          method: 'PUT', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ status: 'Escalated', note: 'Auto-escalated: HIGH priority exceeded 1h SLA', assignedTo: 'System' })
+        });
+        addNotif('high', `🚨 AUTO-ESCALATED: ${c.id} (${c.category}) — SLA exceeded!`);
+        toast(`⚠️ Complaint ${c.id} auto-escalated (SLA breach)`, 'e');
+        loadRecent();
+      } catch {}
+    }
+  });
+}
+
+// ─── DISASTERS ────────────────────────────────────────────────────────────────
+let disFilter = 'all';
+async function loadDisasters() {
+  try {
+    const r = await fetch(`${API}/api/disasters`);
+    const d = await r.json();
+    allDisasters = d.disasters;
+    renderDisasters();
+    document.getElementById('dis-last-updated').textContent = `Last updated: ${new Date().toLocaleTimeString('en-IN')}`;
+  } catch { document.getElementById('dis-list').innerHTML = '<div class="empty"><i class="fas fa-wifi"></i><p>Cannot connect to server</p></div>'; }
+}
+function filterDis(f, el) {
+  disFilter = f;
+  document.querySelectorAll('#dis-chips .chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  renderDisasters();
+}
+function renderDisasters() {
+  let list = allDisasters;
+  if (disFilter !== 'all') {
+    if (['CRITICAL','HIGH','MEDIUM','LOW'].includes(disFilter)) list = list.filter(d => d.severity === disFilter);
+    else list = list.filter(d => d.type === disFilter);
+  }
+  const el = document.getElementById('dis-list');
+  if (!list.length) { el.innerHTML = '<div class="empty"><i class="fas fa-check-circle" style="color:var(--green)"></i><p>No active disasters</p></div>'; return; }
+  const icons = { Earthquake:'🌍', Weather:'🌩️', Flood:'🌊', Fire:'🔥' };
+  el.innerHTML = list.map(d => {
+    const ll = d.coordinates ? `<span class="coord-display">${d.coordinates.lat.toFixed(4)}, ${d.coordinates.lon.toFixed(4)}</span>` : '';
+    return `<div class="dis-card ${d.severity}">
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <span style="font-size:1.2rem">${icons[d.type]||'⚠️'}</span>
+          <strong>${d.type}</strong> — <span style="font-size:0.82rem;color:var(--text2)">${d.subtype||''}</span>
+          <span class="badge b-${d.severity==='CRITICAL'||d.severity==='HIGH'?'HIGH':d.severity==='MEDIUM'?'MEDIUM':'LOW'}" style="margin-left:auto">${d.severity}</span>
+        </div>
+        <div style="font-size:0.85rem;margin-bottom:4px">📍 ${d.location} ${ll ? '— '+ll : ''}</div>
+        <div style="font-size:0.82rem;color:var(--text2)">${d.description}</div>
+        ${d.magnitude ? `<div style="font-size:0.8rem;margin-top:4px;color:var(--orange)">Magnitude: ${d.magnitude}</div>` : ''}
+        <div style="font-size:0.72rem;color:var(--muted);margin-top:6px">Source: ${d.source} · ${timeAgo(d.fetchedAt)}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── STATS & RECENT ──────────────────────────────────────────────────────────
+async function loadStats() {
+  try {
+    const r = await fetch(`${API}/api/stats`);
+    const d = await r.json();
+    document.getElementById('k-total').textContent = d.totalComplaints;
+    document.getElementById('k-high').textContent  = d.highPriority;
+    document.getElementById('k-res').textContent   = d.resolved;
+    document.getElementById('k-dis').textContent   = d.activeDisasters;
+  } catch {}
+}
+
+async function loadRecent() {
+  try {
+    const r = await fetch(`${API}/api/complaints`);
+    const d = await r.json();
+    allComplaints = d.complaints;
+    const list = document.getElementById('recent-list');
+    if (!d.complaints.length) { list.innerHTML = '<div class="empty"><i class="fas fa-inbox"></i><p>No complaints filed yet</p></div>'; return; }
+    const items = d.complaints.slice(0, 15);
+    const slaRows = items.map(c => {
+      const sla = calcSLA(c);
+      const checked = selectedComplaints.has(c.id);
+      return `
+      <div class="complaint-item">
+        <div class="ci-row">
+          <input type="checkbox" class="complaint-checkbox" data-id="${c.id}" ${checked?'checked':''} onchange="onComplaintCheck('${c.id}',this.checked)" onclick="event.stopPropagation()">
+          <div style="flex:1" onclick="openTrack('${c.id}')">
+            <div class="ci-top">
+              <span class="ci-id">${c.id}</span>
+              <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+                <span class="badge b-${c.priority}">${c.priority}</span>
+                <span class="badge b-${c.status.replace(' ','')}">${c.status}</span>
+                ${sla.html}
+                ${c.photos?.length ? `<span style="font-size:0.72rem;color:var(--text2)">📸 ${c.photos.length}</span>` : ''}
+              </div>
+            </div>
+            <div class="ci-text">${c.text.substring(0,100)}${c.text.length>100?'...':''}</div>
+            <div class="ci-meta">
+              <span>🏷️ ${c.category}</span>
+              ${c.location?.area ? `<span>📍 ${c.location.area}</span>` : ''}
+              <span>🕐 ${timeAgo(c.timestamp)}</span>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+    list.innerHTML = slaRows;
+
+    // Refresh map if open
+    if (mapInitialized) refreshMapPins();
+  } catch {}
+}
+
+function openTrack(id) {
+  document.getElementById('track-id').value = id;
+  switchTab('track', document.querySelectorAll('.tab-btn')[1]);
+  trackComplaint();
+}
+
+// ─── FEEDBACK ─────────────────────────────────────────────────────────────────
+let selectedFeedback = null;
+function selectFeedback(rating) {
+  selectedFeedback = rating;
+  const sat = document.getElementById('fb-sat'), unsat = document.getElementById('fb-unsat');
+  if (!sat || !unsat) return;
+  sat.className   = 'fb-btn satisfied'   + (rating==='satisfied'   ? ' selected-sat' : '');
+  unsat.className = 'fb-btn unsatisfied' + (rating==='unsatisfied' ? ' selected-unsat' : '');
+}
+async function submitFeedback(id) {
+  if (!selectedFeedback) { toast('Select Satisfied or Not Satisfied first', 'e'); return; }
+  const comment = document.getElementById('fb-comment')?.value.trim() || '';
+  try {
+    const r = await fetch(`${API}/api/complaint/${id}/feedback`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ rating: selectedFeedback, comment })
+    });
+    const d = await r.json();
+    if (!r.ok) { toast(d.error||'Failed', 'e'); return; }
+    selectedFeedback = null;
+    toast('Thank you for your feedback! 🙏', 's');
+    trackComplaint();
+  } catch { toast('Could not submit feedback', 'e'); }
+}
+
+// ─── PDF REPORT (Feature 11) ─────────────────────────────────────────────────
+async function printPDFReport() {
+  try {
+    toast('Generating PDF report...', 'i');
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-IN', { day:'2-digit', month:'long', year:'numeric' });
+
+    // Header
+    doc.setFillColor(15, 23, 42);
+    doc.rect(0, 0, 297, 28, 'F');
+    doc.setTextColor(255,255,255);
+    doc.setFontSize(18);
+    doc.setFont('helvetica','bold');
+    doc.text('CIVIX — Civic Intelligence Platform', 14, 12);
+    doc.setFontSize(9);
+    doc.setFont('helvetica','normal');
+    doc.text(`Daily Complaints Report | Generated: ${dateStr} ${now.toLocaleTimeString('en-IN')}`, 14, 20);
+
+    // Stats bar
+    const stats = allComplaints.length;
+    const resolved = allComplaints.filter(c=>c.status==='Resolved').length;
+    const high = allComplaints.filter(c=>c.priority==='HIGH').length;
+    const pending = allComplaints.filter(c=>c.status==='Pending').length;
+
+    doc.setFillColor(30, 42, 62);
+    doc.rect(0, 28, 297, 18, 'F');
+    doc.setTextColor(148,163,184);
+    doc.setFontSize(8);
+    const statsItems = [`Total: ${stats}`, `High Priority: ${high}`, `Resolved: ${resolved}`, `Pending: ${pending}`, `Resolution Rate: ${stats ? Math.round(resolved/stats*100) : 0}%`];
+    statsItems.forEach((s, i) => { doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.text(s, 14 + i*56, 39); });
+
+    // Table
+    const tableData = allComplaints.map(c => [
+      c.id,
+      c.text.substring(0,45) + (c.text.length>45?'...':''),
+      c.category,
+      c.priority,
+      c.status,
+      c.location?.area || 'N/A',
+      c.department,
+      c.assignedTo || 'Unassigned',
+      new Date(c.timestamp).toLocaleDateString('en-IN'),
+    ]);
+
+    doc.autoTable({
+      startY: 50,
+      head: [['ID','Description','Category','Priority','Status','Location','Department','Assigned','Filed']],
+      body: tableData,
+      theme: 'grid',
+      headStyles: { fillColor: [79,70,229], textColor: 255, fontSize: 8, fontStyle: 'bold' },
+      bodyStyles: { fontSize: 7.5, textColor: [50,50,50] },
+      alternateRowStyles: { fillColor: [248,250,252] },
+      columnStyles: {
+        0: { cellWidth: 18 },
+        3: { cellWidth: 18 },
+        4: { cellWidth: 22 },
+        8: { cellWidth: 22 },
+      },
+      didDrawCell: (data) => {
+        if (data.section === 'body' && data.column.index === 3) {
+          const priority = data.cell.raw;
+          const colors = { HIGH: [239,68,68], MEDIUM: [249,115,22], LOW: [16,185,129] };
+          const c = colors[priority] || [100,100,100];
+          data.doc.setTextColor(c[0],c[1],c[2]);
+        }
+        if (data.section === 'body' && data.column.index === 4) {
+          const status = data.cell.raw;
+          const colors = { Resolved: [16,185,129], Pending: [234,179,8], 'In Progress': [99,102,241], Escalated: [239,68,68] };
+          const c = colors[status] || [100,100,100];
+          data.doc.setTextColor(c[0],c[1],c[2]);
+        }
+      }
+    });
+
+    // Footer
+    const pageCount = doc.internal.getNumberOfPages();
+    for (let i=1; i<=pageCount; i++) {
+      doc.setPage(i);
+      doc.setFillColor(15,23,42);
+      doc.rect(0, doc.internal.pageSize.height-10, 297, 10, 'F');
+      doc.setTextColor(148,163,184);
+      doc.setFontSize(7);
+      doc.text(`Civix Platform — Hyderabad, Telangana | Confidential | Page ${i} of ${pageCount}`, 14, doc.internal.pageSize.height-3);
+    }
+
+    doc.save(`civix-report-${now.toISOString().slice(0,10)}.pdf`);
+    toast('📄 PDF report downloaded!', 's');
+  } catch (err) {
+    toast('PDF generation failed: ' + err.message, 'e');
+    console.error(err);
+  }
+}
+
+// ─── UTILS ────────────────────────────────────────────────────────────────────
+function timeAgo(ts) {
+  const m = Math.floor((Date.now() - new Date(ts)) / 60000);
+  if (m < 1) return 'just now';
+  if (m < 60) return `${m}m ago`;
+  const h = Math.floor(m/60);
+  if (h < 24) return `${h}h ago`;
+  return `${Math.floor(h/24)}d ago`;
+}
+function toast(msg, type='i') {
+  const w = document.getElementById('toast-wrap');
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.textContent = msg;
+  w.appendChild(t);
+  setTimeout(() => t.remove(), 4000);
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+loadStats();
+loadRecent();
+setInterval(() => { loadStats(); loadRecent(); }, 20000);
+setInterval(loadDisasters, 30000);
+// Check escalation every 5 minutes
+setInterval(checkAutoEscalation, 300000);
+// Update SLA timers every minute
+setInterval(loadRecent, 60000);
+</script>
+</body>
+</html>
