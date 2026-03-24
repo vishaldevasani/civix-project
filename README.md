@@ -1,10 +1,5 @@
 # 🏛️ Civix — AI Civic Intelligence Platform
 
-> An AI-powered civic complaint management system for Hyderabad, Telangana.
-> Built for real-time emergency response, smart complaint routing, and transparent citizen-government communication.
-
-\---
-
 ## 📁 Project Structure
 
 ```
