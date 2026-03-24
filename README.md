@@ -140,7 +140,7 @@ Just open these HTML files directly in your browser — no server needed:
 
 ### When a complaint is submitted:
 
-* 📱 **WhatsApp** sent to admin `+918328376205`
+* 📱 **WhatsApp** sent to admin `+91xxxxxxxxxx`
 * 📧 **Email** sent to the citizen (if email was provided)
 * 🔔 **SSE push** updates admin dashboard live
 
