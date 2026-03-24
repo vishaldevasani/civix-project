@@ -14,15 +14,15 @@ const path     = require('path');
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
 const CONFIG = {
   EMAIL_ENABLED:        true,
-  EMAIL_FROM:           process.env.EMAIL_FROM
-  EMAIL_APP_PASSWORD:   process.env.EMAIL_APP_PASSWORD
+  EMAIL_FROM:           process.env.EMAIL_FROM,
+  EMAIL_APP_PASSWORD:   process.env.EMAIL_APP_PASSWORD,
   WHATSAPP_ENABLED:     true,
-  TWILIO_SID:           process.env.TWILIO_SID
-  TWILIO_TOKEN:         process.env.TWILIO_TOKEN         
-  WHATSAPP_FROM:        process.env.WHATSAPP_FROM        
-  WHATSAPP_TO:          process.env.WHATSAPP_TO          
+  TWILIO_SID:           process.env.TWILIO_SID,
+  TWILIO_TOKEN:         process.env.TWILIO_TOKEN,        
+  WHATSAPP_FROM:        process.env.WHATSAPP_FROM,       
+  WHATSAPP_TO:          process.env.WHATSAPP_TO,        
   DISASTER_INTERVAL_MS: 30000,
-  PORT:                 process.env.PORT              
+  PORT:                 process.env.PORT,            
   BRAND:                'Civix',
   BRAND_TAGLINE:        'AI Civic Intelligence Platform',
   BRAND_CITY:           'Hyderabad, Telangana',
