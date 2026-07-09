@@ -69,7 +69,7 @@ function loadData() {
       return saved;
     }
   } catch (e) {
-    console.warn('[DB] Could not load data.json — starting fresh:', e.message);
+    console.warn('[DB] Could not load complete json file — starting fresh:', e.message);
   }
   return null;
 }
